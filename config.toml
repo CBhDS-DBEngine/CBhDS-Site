@@ -1,0 +1,4 @@
+baseURL = "https://CBhDS-DBEngine.github.io/"
+languageCode = "fr-fr"
+title = "Portfolio Technique - CBhDS"
+theme = "ananke"
