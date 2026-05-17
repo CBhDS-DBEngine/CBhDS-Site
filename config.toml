@@ -1,4 +1,4 @@
-baseURL = "https://CBhDS-DBEngine.github.io/CBhDS-Site"
+baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
-title = "Portfolio Technique - flopCBhDS"
+title = "Portfolio Technique"
 theme = "ananke"
