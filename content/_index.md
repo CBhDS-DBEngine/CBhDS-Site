@@ -1,7 +1,6 @@
 ---
-title: "Portfolio Technique"
+title: "Techlead DBA SQL Server Expert"
+subtitle: "Audit & Santé • Industrialisation & Automatisation • Performance & Optimisation • Haute Disponibilité • Conseil Stratégique 
 ---
 
-# Bienvenue 👋
-
-DBA PostgreSQL / Oracle / SQL Server  
+Bienvenue sur mon portfolio technique
