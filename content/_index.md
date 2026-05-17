@@ -1,6 +1,6 @@
 ---
 title: "Techlead DBA SQL Server Expert"
-subtitle: "Audit & Santé • Industrialisation & Automatisation • Performance & Optimisation • Haute Disponibilité • Conseil Stratégique"
+subtitle: "Audit & Santé • Industrialisation & Automatisation • Performance & Optimisation • Haute Disponibilité"
 ---
 
-Bienvenue sur mon portfolio technique v2
+Bienvenue sur mon portfolio technique v3
