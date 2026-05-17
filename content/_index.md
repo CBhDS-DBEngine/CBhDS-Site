@@ -1,8 +1,7 @@
 ---
-title: "Portfolio Technique - CBhDS"
-date: 2026-05-17
+title: "Portfolio Technique"
 ---
 
-# Bonjour 👋
+# Bienvenue 👋
 
-Je suis DBA spécialisé SQL Server.
+DBA PostgreSQL / Oracle / SQL Server  
