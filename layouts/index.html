@@ -2,13 +2,46 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>{{ .Title }}</title>
+
+  <style>
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px;
+      line-height: 1.7;
+    }
+
+    h1 {
+      color: #3b82f6;
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      color: #93c5fd;
+      font-size: 20px;
+      margin-bottom: 40px;
+    }
+  </style>
 </head>
+
 <body>
 
   <h1>{{ .Title }}</h1>
 
-  {{ .Content }}
+  <div class="subtitle">
+    {{ .Params.subtitle }}
+  </div>
+
+  <div>
+    {{ .Content }}
+  </div>
 
 </body>
 </html>
