@@ -35,7 +35,9 @@ PS> docker tag tpcorg/hammerdb:mssqls hammerdb:mssqls
 ```
 3b/ Configure Schema Build
 
-In my configuration, the SQL Server instance runs in another container named mssql2025 and the port is 1468. The authencation : SQL Server using sa login.
+In my configuration, the SQL Server instance runs in another container named mssql2025 and the port is 1468. 
+
+Authentication: SQL Server using sa login.
 
 I do not want to manage docker subnet, so I use the "host.docker.internal" feature to interconnect the SQL Server container and the HammerDB one.
 ```bash
