@@ -1,8 +1,20 @@
 ---
 title: "HammerDB flop5"
-date: 2026-05-18T00:00:00Z
-summary: "Generate transaction with HammerDB"
+date: 2026-05-18
+summary: "Deploy HammerDB in a container and simulate workload against a SQL Server instance"
 ---
+
+HammerDB, the industry standard open-source database benchmark tool is used to :
+
+- Deploy a dedicated container for HammerDB
+  
+- Create a new TPC-C database on an existing SQL instance in a separate container
+  
+- Create a SQL Server workload scenario
+  
+- Execute workload simulations
+
+
 
 1/ Install HammerDB on Windows
 ```bash
