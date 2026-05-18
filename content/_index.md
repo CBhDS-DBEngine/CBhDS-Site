@@ -4,8 +4,8 @@ subtitle_fr: "Audit & Santé • Industrialisation & Automatisation • Performa
 subtitle_en: "Audit & system health check • Industrialization & Automation • Performance & Optimization • High Availability"
 ---
 
-Ce portfolio regroupe des tips, des dossiers techniques, analyses terrain et retours d’expérience autour de SQL Server pratiques. 
+Ce portfolio regroupe des tips, des dossiers techniques, analyses terrain et retours d’expérience autour de SQL Server. 
 Ici pas de grands discours !
 
-This portfolio gathers practical SQL Server tips, technical notes, field analysis and production experience feedback.
+This portfolio gathers practical SQL Server tips, technical notes, field analysis and production experience feedbacks.
 No buzzwords or long speeches here — only practical.
