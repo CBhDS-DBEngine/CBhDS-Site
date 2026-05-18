@@ -1,7 +1,7 @@
 ---
 title: "Expert SQL Server - Tech lead - DBA"
-subtitle: "Audit & Santé • Industrialisation & Automatisation • Performance & Optimisation • Haute Disponibilité"
-subtitle: "Audit & system health check • Industrialization & Automation • Performance & Optimization • High Availability"
+subtitle_fr: "Audit & Santé • Industrialisation & Automatisation • Performance & Optimisation • Haute Disponibilité"
+subtitle_en: "Audit & system health check • Industrialization & Automation • Performance & Optimization • High Availability"
 ---
 
 Ce portfolio regroupe des tips, des dossiers techniques, analyses terrain et retours d’expérience autour de SQL Server pratiques. 
