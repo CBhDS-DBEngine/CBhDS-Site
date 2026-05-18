@@ -1,20 +1,12 @@
 baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
-title = "CBhDS - Portfolio Technique v13"
+title = "CBhDS - Portfolio Technique v14"
 theme = "PaperMod"
 
 [params]
   description = "SQL Server Production Engineering v1"
   defaultTheme = "dark"
   ShowCodeCopyButtons = true
-
-  [params.homeInfoParams]
-    Title = "Docker SQL Lab"
-    Content = "SQL Server Production Engineering v1"
-
-[[params.socialIcons]]
-  name = "linkedin"
-  url = "https://www.linkedin.com/in/chbrault-dba/"
 
 [menu]
 
