@@ -1,5 +1,5 @@
 ---
-title: SQL Server automation"
+title: SQL Server automation
 date: 2026-05-18
 ---
 
