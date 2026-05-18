@@ -2,27 +2,7 @@ baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
 title = "CBhDS - Portfolio Technique"
 theme = "PaperMod"
-
-[module]
-  [[module.mounts]]
-    source = "themes/PaperMod/layouts"
-    target = "layouts"
-  [[module.mounts]]
-    source = "themes/PaperMod/assets"
-    target = "assets"
-  [[module.mounts]]
-    source = "content"
-    target = "content"
-  [[module.mounts]]
-    source = "static"
-    target = "static"
-    
-[params]
-  description = "SQL Server Production Engineering"
-  copyright = "CBhDS"
-  ShowCodeCopyButtons = true
-  ShowSocialIcons = true
     
 [[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/CBhDS-DBEngine"
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/chbrault-dba/"
