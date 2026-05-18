@@ -5,11 +5,19 @@ theme = "PaperMod"
 
 [params]
   description = "SQL Server Production Engineering v1"
+  defaultTheme = "dark"
+  ShowCodeCopyButtons = true
+  ShowSocialIcons = true
+
+  # Sections affichées sur la home
+  mainSections = [
+    "docker-sqlserver-lab",
+    "sqlserver",
+    "kubernetes",
+    "monitoring"
+  ]
+
   
-  [params.profileMode]
-    enabled = true
-    title = "CBhDS"
-    subtitle = "SQL Server Production Engineering v0"
     
 [[params.socialIcons]]
   name = "linkedin"
