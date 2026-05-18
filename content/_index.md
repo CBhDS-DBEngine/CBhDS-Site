@@ -10,6 +10,6 @@ Ici pas de grands discours !
 This portfolio gathers practical SQL Server tips, technical notes, field analysis and production experience feedbacks.
 No buzzwords or long speeches here — only practical.
 
-## Labs & Environments
+## SQL Server Production Engineering
 
 - [Docker SQL Lab](docker-sqlserver-lab/)
