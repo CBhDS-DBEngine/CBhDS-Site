@@ -12,4 +12,4 @@ No buzzwords or long speeches here — only practical.
 
 ## Labs & Environments
 
-- [Docker SQL Lab](/docker-sqlserver-lab/)
+- [Docker SQL Lab](docker-sqlserver-lab/)
