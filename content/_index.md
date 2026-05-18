@@ -12,6 +12,6 @@ No buzzwords or long speeches here — only practical.
 
 ## SQL Server Production Engineering
 
-- [Docker SQL Lab](docker-sqlserver-lab/)
+- [Docker & SQL Server Lab](docker-sqlserver-lab/)
 
 ## Articles
