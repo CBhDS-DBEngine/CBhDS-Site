@@ -13,7 +13,9 @@ PS> docker tag tpcorg/hammerdb:mssqls hammerdb:mssqls
 2/ Run the image in a container
 
 3/ Update and configuration to build the tpcc db
+
 3a/ Execute these commands in the container
+
 /tmp is necessary to build the schema
 ```bash
 # apt-get update
@@ -21,7 +23,9 @@ PS> docker tag tpcorg/hammerdb:mssqls hammerdb:mssqls
 # export TMP=/tmp
 ```
 3b/ Configure Schema Build
+
 In my configuration, the SQL Server instance runs in another container named mssql2025 and the port is 1468. The authencation : SQL Server using sa login.
+
 I do not want to manage docker subnet, so I use the "host.docker.internal" feature to interconnect the SQL Server container and the HammerDB one.
 ```bash
 #./hammerdbcli
@@ -61,6 +65,7 @@ connection {
  mssqls_trust_server_cert  = true
 ```
 4/ Build schema
+
 It creates a tpcc db in the SQL server instance. It can take a while ...
 ```bash 
 ammerdb>buildschema
@@ -70,8 +75,11 @@ Building 1 Warehouses(s) with 1 Virtual User
 ```
  
 5/ Generate transactions 
+
 Depending of your needs, you can change teh follwong parameters. On my side i do use 1 warehouse, and 15 users.
+
 I'm able to generate running, runnable, waiting sessions and locks. 
+
 5a/ Prepare the run 
 ```bash
 hammerdb> diset tpcc mssqls_rampup 1
@@ -90,42 +98,3 @@ hammerdb> vudestroy
 ```
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-hammerdb>diset connection mssqls_server mssql2025
-Changed connection:mssqls_server from (local) to mssql2025 for MSSQLServer
-
-hammerdb>diset connection mssqls_port 1468
-Changed connection:mssqls_port from 1433 to 1468 for MSSQLServer
-
-hammerdb>diset connection mssqls_uid sa
-Value sa for connection:mssqls_uid is the same as existing value sa, no change made
-
-hammerdb>diset connection mssqls_pass "TuMeGonfle00!"
-Changed connection:mssqls_pass from admin to TuMeGonfle00! for MSSQLServer
-
-hammerdb>diset connection mssqls_server host.docker.internal
-Changed connection:mssqls_server from mssql2025 to host.docker.internal for MSSQLServer
-
-hammerdb>diset connection mssqls_linux_server host.docker.internal
-Changed connection:mssqls_linux_server from localhost to host.docker.internal for MSSQLServer
-
-hammerdb>diset connection mssqls_authentication sql
-Changed connection:mssqls_authentication from windows to sql for MSSQLServer
-
-hammerdb>diset tpcc mssqls_use_bcp false
-Changed tpcc:mssqls_use_bcp from true to false for MSSQLServer
-
-hammerdb>diset connection mssqls_tcp true
-Changed connection:mssqls_tcp from false to true for MSSQLServer
