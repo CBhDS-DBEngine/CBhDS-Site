@@ -16,3 +16,12 @@ theme = "PaperMod"
   [[module.mounts]]
     source = "static"
     target = "static"
+    
+[params]
+    # Le texte du footer (le symbole © et l'année sont souvent automatiques)
+    footerText = "CBhDS — SQL Server Production Engineering"
+    
+    # Pour ton lien LinkedIn
+    [[params.socialIcons]]
+        name = "linkedin"
+        url = "https://www.linkedin.com/in/chbrault-dba/"
