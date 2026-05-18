@@ -1,6 +1,6 @@
 baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
-title = "CBhDS - Portfolio Technique v8"
+title = "CBhDS - Portfolio Technique v10"
 theme = "PaperMod"
 
 [params]
@@ -16,14 +16,25 @@ theme = "PaperMod"
     "monitoring"
   ]
 
-  [params.homeInfoParams]
-    Title = "CBhDS"
-    Content = "SQL Server Production Engineering v0"
+[menu]
 
-[[params.socialIcons]]
-  name = "linkedin"
-  url = "https://www.linkedin.com/in/chbrault-dba/"
+  # Liens externes
+  [[menu.main]]
+    identifier = "linkedin"
+    name = "LinkedIn"
+    url = "https://www.linkedin.com/in/chbrault-dba/"
+    weight = 1
 
-[[params.socialIcons]]
-  name = "github"
-  url = "https://github.com/CBhDS-DBEngine"
+  [[menu.main]]
+    identifier = "github"
+    name = "GitHub"
+    url = "https://github.com/CBhDS-DBEngine"
+    weight = 2
+
+  # Sections du site
+  [[menu.main]]
+    identifier = "docker-sqlserver-lab"
+    name = "Docker SQL Lab"
+    url = "/docker-sqlserver-lab/"
+    weight = 10
+
