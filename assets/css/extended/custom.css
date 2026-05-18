@@ -1,7 +1,3 @@
-.first-entry {
-    margin-top: 20px !important;
-}
-
-.first-entry .entry-header h2 {
-    font-size: 2rem !important;
+body {
+    background: red !important;
 }
