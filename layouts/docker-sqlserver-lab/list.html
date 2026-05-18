@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>{{ .Title }}</title>
+
+  <style>
+
+    body {
+      background: #0f172a;
+      color: #e5e7eb;
+      font-family: Arial, sans-serif;
+      max-width: 1000px;
+      margin: auto;
+      padding: 40px;
+      line-height: 1.8;
+    }
+
+    h1 {
+      color: #3b82f6;
+      margin-bottom: 20px;
+    }
+
+    .article {
+      background: #111827;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 10px;
+    }
+
+    .article a {
+      color: #60a5fa;
+      text-decoration: none;
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    .article p {
+      color: #cbd5e1;
+    }
+
+  </style>
+
+</head>
+
+<body>
+
+  <h1>{{ .Title }}</h1>
+
+  <div>
+    {{ .Content }}
+  </div>
+
+  <hr>
+
+  {{ range .Pages }}
+
+    <div class="article">
+
+      <a href="{{ .RelPermalink }}">
+        {{ .Title }}
+      </a>
+
+      <p>
+        {{ .Summary }}
+      </p>
+
+    </div>
+
+  {{ end }}
+
+</body>
+</html>
