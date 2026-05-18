@@ -1,6 +1,6 @@
 baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
-title = "CBhDS - Portfolio Technique v6"
+title = "CBhDS - Portfolio Technique v8"
 theme = "PaperMod"
 
 [params]
