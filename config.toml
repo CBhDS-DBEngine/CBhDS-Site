@@ -23,7 +23,6 @@ theme = "PaperMod"
   ShowCodeCopyButtons = true
   ShowSocialIcons = true
     
-# Pour ton lien LinkedIn
 [[params.socialIcons]]
-  name = "linkedin"
-  url = "https://www.linkedin.com/in/chbrault-dba/"
+  name = "github"
+  url = "https://github.com/CBhDS-DBEngine"
