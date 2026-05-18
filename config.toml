@@ -1,7 +1,15 @@
 baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
-title = "CBhDS - Portfolio Technique v3"
+title = "CBhDS - Portfolio Technique v4"
 theme = "PaperMod"
+
+[params]
+  description = "SQL Server Production Engineering v1"
+  
+  [params.profileMode]
+    enabled = true
+    title = "CBhDS"
+    subtitle = "SQL Server Production Engineering v0"
     
 [[params.socialIcons]]
   name = "linkedin"
