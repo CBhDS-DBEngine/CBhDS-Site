@@ -1,13 +1,16 @@
-.first-entry {
-    margin-top: 1rem !important;
+article {
+    margin-top: 0 !important;
 }
 
-.first-entry .entry-header h1,
-.first-entry .entry-header h2 {
-    font-size: 2rem !important;
-    line-height: 1.2 !important;
+article.post-entry {
+    padding: 10px !important;
 }
 
-.post-entry {
-    margin-bottom: 1rem !important;
+.entry-header h2 {
+    font-size: 24px !important;
+    margin: 0 !important;
+}
+
+.post-content h2 {
+    margin-bottom: 10px !important;
 }
