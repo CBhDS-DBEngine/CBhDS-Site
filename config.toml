@@ -15,6 +15,3 @@ theme = "PaperMod"
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/chbrault-dba/"
     weight = 1
-
-[params.assets]
-customCSS = ["css/custom.css"]
