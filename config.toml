@@ -5,3 +5,5 @@ theme = "PaperMod"
 
 canonifyURLs = true
 relativeURLs = true
+
+ignoreFiles = ["^layouts/.*", "^assets/.*", "^static/css/.*"]
