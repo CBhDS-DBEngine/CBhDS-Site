@@ -19,10 +19,11 @@ theme = "PaperMod"
     
 [params]
   description = "SQL Server Production Engineering"
-  # Le texte du footer (le symbole © et l'année sont souvent automatiques)
-  copyright = "© 2026 CBhDS"
+  copyright = "CBhDS"
+  ShowCodeCopyButtons = true
+  ShowSocialIcons = true
     
 # Pour ton lien LinkedIn
 [[params.socialIcons]]
-        name = "linkedin"
-        url = "https://www.linkedin.com/in/chbrault-dba/"
+  name = "linkedin"
+  url = "https://www.linkedin.com/in/chbrault-dba/"
