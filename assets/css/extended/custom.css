@@ -14,3 +14,7 @@ article.post-entry {
 .post-content h2 {
     margin-bottom: 10px !important;
 }
+
+.first-entry {
+    min-height: auto !important;
+}
