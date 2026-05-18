@@ -1,8 +1,8 @@
 ---
-title: SQL Server automationb"
+title: SQL Server automation"
 date: 2026-05-18
 ---
 
-Utiliser les outils communautaires avec SQL Server.
+Automatiser et diagnostiquer SQL Server avec les solutions communautaires comme celle d'Ola Hallengren, First Responder Kit de Brent Ozar ...
 
-Using Docker to build a SQL Server lab environment.
+Automating and Monitoring SQL Server with Community Tools like Ola Hallengren’s maintenance solution and Brent Ozar’s First Responder Kit ...
