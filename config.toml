@@ -3,7 +3,16 @@ languageCode = "fr-fr"
 title = "Portfolio Technique"
 theme = "PaperMod"
 
-canonifyURLs = true
-relativeURLs = true
-
-ignoreFiles = ["^layouts/.*", "^assets/.*", "^static/css/.*"]
+[module]
+  [[module.mounts]]
+    source = "themes/PaperMod/layouts"
+    target = "layouts"
+  [[module.mounts]]
+    source = "themes/PaperMod/assets"
+    target = "assets"
+  [[module.mounts]]
+    source = "content"
+    target = "content"
+  [[module.mounts]]
+    source = "static"
+    target = "static"
