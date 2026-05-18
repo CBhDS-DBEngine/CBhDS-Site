@@ -1,9 +1,9 @@
-DEBUG SINGLE TEMPLATE
-
 <h1>{{ .Title }}</h1>
 
-<p>{{ .Date }}</p>
+<p>Date brute : {{ .Params.date }}</p>
 
-<p>{{ .Summary }}</p>
+<p>Summary brut : {{ .Params.summary }}</p>
+
+<hr>
 
 {{ .Content }}
