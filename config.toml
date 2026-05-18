@@ -2,3 +2,6 @@ baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
 title = "Portfolio Technique"
 theme = "PaperMod"
+
+canonifyURLs = true
+relativeURLs = true
