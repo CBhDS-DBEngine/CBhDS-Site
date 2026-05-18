@@ -1,6 +1,6 @@
 baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
-title = "CBhDS - Portfolio Technique v16"
+title = "CBhDS - Portfolio Technique v20"
 theme = "PaperMod"
 
 [params]
@@ -15,3 +15,6 @@ theme = "PaperMod"
     name = "LinkedIn"
     url = "https://www.linkedin.com/in/chbrault-dba/"
     weight = 1
+
+[params.assets]
+customCSS = ["css/custom.css"]
