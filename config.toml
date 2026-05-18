@@ -1,6 +1,6 @@
 baseURL = "https://cbhds-dbengine.github.io/CBhDS-Site/"
 languageCode = "fr-fr"
-title = "Portfolio Technique"
+title = "CBhDS - Portfolio Technique"
 theme = "PaperMod"
 
 [module]
@@ -18,8 +18,9 @@ theme = "PaperMod"
     target = "static"
     
 [params]
+    description = "SQL Server Production Engineering"
     # Le texte du footer (le symbole © et l'année sont souvent automatiques)
-    footerText = "CBhDS — SQL Server Production Engineering"
+    footerText = "© 2026 CBhDS"
     
     # Pour ton lien LinkedIn
     [[params.socialIcons]]
