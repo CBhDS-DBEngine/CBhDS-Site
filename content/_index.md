@@ -13,6 +13,7 @@ No buzzwords or long speeches here — only practical.
 ## SQL Server Production Engineering
 
 - [Docker & SQL Server Lab](docker-sqlserver-lab/)
+- [Community Resources for SQL Server](community/)
 - [Automation](automation/)
 
 ## Articles
