@@ -5,6 +5,8 @@ article {
 .first-entry,
 article.post-entry {
     padding: 10px !important;
+    border-radius: var(--radius);
+    background: var(--entry);
 }
 
 .entry-header h2 {
