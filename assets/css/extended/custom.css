@@ -2,6 +2,7 @@ article {
     margin-top: 0 !important;
 }
 
+.first-entry,
 article.post-entry {
     padding: 10px !important;
 }
