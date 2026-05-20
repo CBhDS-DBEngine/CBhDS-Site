@@ -66,3 +66,6 @@ SizeMB             : 6.625
 Compatibility      : Version170
 Collation          : SQL_Latin1_General_CP1_CI_AS
 ...
+```
+
+Find practical examples and usage scenarios here: https://cbhds-dbengine.github.io/CBhDS-Site/community/tools/dbatools/
