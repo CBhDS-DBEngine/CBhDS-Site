@@ -1,39 +1,37 @@
 ---
 title: "Community ressources for SQL Server"
 date: 2026-05-07
-summary: "List some important community ressources for SQL Server "
+summary: "List some important community ressources for SQL Server I use for many years"
 ---
 
-Here are some of my favorite community resources that I’ve used for many years. 
+Here are some of my favorite community resources that I’ve used for many years. A second article will showcase concrete use cases.
 
 I tried to organize them by category.
 
-1/ ANALYSYS & PERFORMANCE TUNING
+## ANALYSYS & PERFORMANCE TUNING
 
-First Responder Kit by Brent Ozar Unlimited : https://www.brentozar.com/ - Open-source T-SQL script collection.
+### First Responder Kit by Brent Ozar Unlimited : https://www.brentozar.com/ - Open-source T-SQL script collection.
 
-- sp_BlitzFirst --> Real-Time Performance Advice / Troubleshoot Slow SQL Server
-- sp_Blitz –-> Overall Health Check
-- sp_BlitzCache --> Find the Most Resource-Intensive Queries
-- sp_BlitzIndex –-> Tune Your Indexes
-- sp_BlitzWho --> What Queries are Running Now
-- sp_BlitzLock --> Deadlock Analysis
-- sp_kill --> Emergency Session Killer
--  sp_DatabaseRestore --> Easier Multi-File Restores if you use Ola Hallengren's backup scripts
+In the world of SQL Server performance tuning, these two scripts are often the first reflex for any DBA or Developer facing a slow server.
 
-sp_WhoIsActive de Adam Machanic → problème en cours
-	http://whoisactive.com/
-	T-SQL (Transact-SQL)
+- **sp_BlitzFirst**: Think of this as an EKG for your database. It looks at what is happening **right now**. I use it in conjunction with **sp_WhoIsActive** (see below).
+- **sp_Blitz**: The next natural step to check the entire configuration.
 
-Glenn Berry Diagnostic Queries
-	Ensemble de scripts T-SQL conçus pour surveiller et diagnostiquer les 
-	performances de Microsoft SQL Server.
-	https://glennsqlperformance.com/home/
+Remaining scripts :
 
-Tiger Toolbox
-	https://github.com/microsoft/tigertoolbox
-	Tiger team of MS
+- sp_BlitzCache: Find the Most Resource-Intensive Queries
+- sp_BlitzIndex: Tune Your Indexes
+- sp_BlitzWho: What Queries are Running Now
+- sp_BlitzLock: Deadlock Analysis
+- sp_kill: Emergency Session Killer
+- sp_DatabaseRestore: Easier Multi-File Restores if you use Ola Hallengren's backup scripts
 
+### sp_WhoIsActive by Adam Machanic - http://whoisactive.com/ - T-SQL (Transact-SQL)
+
+**sp_WhoIsActive ** is query-centric. It allows you to zoom in on every active session to see precisely what it's doing, how much resource it's consuming, and why it's slow. This tool provides *granular, real-time visibility*allowing you to drill down into specific problems using its many advanced options.
+
+
+While my first reflex is to check the server-wide health, my second reflex is query-centric. I use sp_WhoIsActive to zoom in on active sessions...
 
 Automatisation & DevOps SQL Server
 **********************************
@@ -42,26 +40,11 @@ dbatools : Ok
 	https://dbatools.io/, 700+ powershell tools : Ok
 	Livre : Learn dbatools in a Month of Lunches : Ok
 	
-Ansible
-	Ansible est un excellent choix si tu veux automatiser la gestion, 
-	le déploiement, la configuration et l’audit de SQL Server
-	S'intègre avec dbatools, OLA ...
-	
-Terraform 
-	Déclarer et provisionner l’infrastructure, tandis qu’Ansible configure et maintient.
- 
- 
-| Besoin 					| Terraform 		| Ansible 		| dbatools
-| Provisionner VM / réseau  | ⭐ Oui 			| ✔ Possible 	| ❌ Non 
-| Installer SQL Server 		| ⚠️ Non (pas seul) | ⭐ Oui 		| ✔ Oui 
-| Configurer SQL Server 	| ❌ Non 			| ⭐ Oui 		| ⭐ Oui
-| Déployer scripts SQL 		| ❌ Non 			| ⭐ Oui 		| ⭐ Oui 
-| Gérer SQL Azure 			| ⭐ Oui 			| ✔ Possible 	| ❌ Non
-| Idéal pour 				| Infra 			| Config 		| SQL pur 
 
-Maintenance
-***********
+## PREVENTIVE MAINTENANCE
 
+### DatabaseBackup, Database IntegrityCheck, 
+No introduction is needed for Ola Hallengren’s Maintenance Solution; it is the industry standard for backups, integrity checks, and index optimization."
 https://ola.hallengren.com/
 	DatabaseBackup, DatabaseIntegrityCheck, IndexOptimize, CommandExecute
 
