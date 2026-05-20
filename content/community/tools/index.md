@@ -10,83 +10,52 @@ I tried to organize them by category.
 
 ## ANALYSYS & PERFORMANCE TUNING
 
-### First Responder Kit by Brent Ozar Unlimited : https://www.brentozar.com/ - Open-source T-SQL script collection.
+### 1/ First Responder Kit by Brent Ozar Unlimited : https://www.brentozar.com/ - Open-source T-SQL script collection.
 
 In the world of SQL Server performance tuning, these two scripts are often the first reflex for any DBA or Developer facing a slow server.
 
-- **sp_BlitzFirst**: Think of this as an EKG for your database. It looks at what is happening **right now**. I use it in conjunction with **sp_WhoIsActive** (see below).
-- **sp_Blitz**: The next natural step to check the entire configuration.
+- ***sp_BlitzFirst***: Think of this as an EKG for your database. It looks at what is happening **right now**. I use it in conjunction with ***sp_WhoIsActive*** (see below).
+- ***sp_BlitzCache***: Find the Most Resource-Intensive Queries
+- ***sp_Blitz***: The next natural step to check the entire configuration.
 
 Remaining scripts :
 
-- sp_BlitzCache: Find the Most Resource-Intensive Queries
-- sp_BlitzIndex: Tune Your Indexes
-- sp_BlitzWho: What Queries are Running Now
-- sp_BlitzLock: Deadlock Analysis
-- sp_kill: Emergency Session Killer
-- sp_DatabaseRestore: Easier Multi-File Restores if you use Ola Hallengren's backup scripts
+- *sp_BlitzIndex*: Tune Your Indexes
+- *sp_BlitzWho*: What Queries are Running Now
+- *sp_BlitzLock*: Deadlock Analysis
+- *sp_kill*: Emergency Session Killer
+- *sp_DatabaseRestore*: Easier Multi-File Restores if you use Ola Hallengren's backup scripts
 
-### sp_WhoIsActive by Adam Machanic - http://whoisactive.com/ - T-SQL (Transact-SQL)
+### 2/ sp_WhoIsActive by Adam Machanic - http://whoisactive.com/ - T-SQL (Transact-SQL)
 
-**sp_WhoIsActive ** is query-centric. It allows you to zoom in on every active session to see precisely what it's doing, how much resource it's consuming, and why it's slow. This tool provides *granular, real-time visibility*allowing you to drill down into specific problems using its many advanced options.
+***sp_WhoIsActive*** is query-centric. It allows you to zoom in on every active session to see precisely what it's doing, how much resource it's consuming, and why it's slow. This tool provides *granular, real-time visibility*allowing you to drill down into specific problems using its many advanced options.
 
-
-While my first reflex is to check the server-wide health, my second reflex is query-centric. I use sp_WhoIsActive to zoom in on active sessions...
-
-Automatisation & DevOps SQL Server
-**********************************
-
-dbatools : Ok
-	https://dbatools.io/, 700+ powershell tools : Ok
-	Livre : Learn dbatools in a Month of Lunches : Ok
-	
+`While my first reflex is to check the server-wide health ***sp_BlitzFirst***, my second reflex is query-centric. I use ***sp_WhoIsActive*** to zoom in on active sessions...`
 
 ## PREVENTIVE MAINTENANCE
 
-### DatabaseBackup, Database IntegrityCheck, 
-No introduction is needed for Ola Hallengren’s Maintenance Solution; it is the industry standard for backups, integrity checks, and index optimization."
-https://ola.hallengren.com/
-	DatabaseBackup, DatabaseIntegrityCheck, IndexOptimize, CommandExecute
+### 1/ SQL Server Backup, Integrity Check, Index & Statistics Maintenance - https://ola.hallengren.com/ - T-SQL (Transact-SQL)
 
-Monitoring
-**********
+No introduction is needed for Ola Hallengren’s Maintenance Solution; it is the industry standard for backups, integrity checks, and index optimization. 
 
-DBA Dash
-	Monitoring + checks + tracking de config
+- *DatabaseBackup*: SQL Server Backup
+- *DatabaseIntegrityCheck*: SQL Server Integrity Check
+- *IndexOptimize*: SQL Server Index and Statistics Maintenance
 
-SQLWATCH 
-	Nécessite Tableau / Power BI
+If ***sp_Blitz*** warns you about high fragmentation or missing backups, probably Ola Hallengren’s Maintenance Solution is the best way
+l help you to solve these issues.
 
-Tunning
-*******
-
-SentryOne Plan Explorer
-	https://www.solarwinds.com/free-tools/plan-explorer
-
-SQLQueryStress
-	Tester une requête sous charge
-	Comparer les performances avant/après tuning
-
-Statistic Parser (Richie Rump)
+`I particularly like ***@Directory = NULL*** parameter in ***DatabaseBackup***. This is incredibly useful in Always On configurations where databases are in Full Recovery Model. It allows you to perform log backups to truncate the transaction log and prevent 'Log Full' errors, without actually generating unnecessary backup files that consume storage.`
 
 
-Test unitaire
-*************
-
-tSQLt
-	Framework de tests unitaires 
-
-Generic
-*******
-
-Azure Data Studio (ADS)
-	Azure Data Studio est un éditeur SQL moderne, multiplateforme (Windows, Linux, macOS), 
-	extensible, pensé pour l’analyse, le développement et l’observabilité SQL Server.
-	+ SQL Server Assessment
+## AUTOMATION AND DevOps SQL SERVER
 
 
-Livres
-******
+### dbatools : Ok
+	https://dbatools.io/, 700+ powershell tools : Ok
+	Livre : Learn dbatools in a Month of Lunches : Ok
 
-Microsoft Azure Essentials Migrating Sql Server Databases To Azure
-Ok : Learn dbatools in a Month of Lunches
+
+
+
+
