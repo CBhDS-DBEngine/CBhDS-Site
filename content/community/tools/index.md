@@ -1,6 +1,5 @@
 ---
 title: "Community ressources for SQL Server"
-date: 2026-05-07
 summary: "List some important community ressources for SQL Server I use for many years"
 ---
 
