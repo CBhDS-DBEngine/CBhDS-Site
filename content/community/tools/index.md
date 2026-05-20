@@ -32,7 +32,7 @@ Remaining scripts :
 
 `While my first reflex is to check the server-wide health ***sp_BlitzFirst***, my second reflex is query-centric. I use ***sp_WhoIsActive*** to zoom in on active sessions...`
 
-## PREVENTIVE MAINTENANCE
+## PREVENTIVE MAINTENANCE, AUTOMATION AND DevOps SQL SERVER
 
 ### 1/ SQL Server Backup, Integrity Check, Index & Statistics Maintenance - https://ola.hallengren.com/ - T-SQL (Transact-SQL)
 
@@ -43,18 +43,23 @@ No introduction is needed for Ola Hallengren’s Maintenance Solution; it is the
 - *IndexOptimize*: SQL Server Index and Statistics Maintenance
 
 If ***sp_Blitz*** warns you about high fragmentation or missing backups, probably Ola Hallengren’s Maintenance Solution is the best way
-l help you to solve these issues.
+to solve these issues.
 
-`I particularly like ***@Directory = NULL*** parameter in ***DatabaseBackup***. This is incredibly useful in Always On configurations where databases are in Full Recovery Model. It allows you to perform log backups to truncate the transaction log and prevent 'Log Full' errors, without actually generating unnecessary backup files that consume storage.`
+`I particularly like ***@Directory = NUL*** parameter in ***DatabaseBackup***. This is incredibly useful in **dev/test** Always On configurations where databases are in Full Recovery Model. It allows you to perform log backups to truncate the transaction log and prevent 'Log Full' errors, without actually generating unnecessary backup files that consume storage.`
 
+### 2/ dbatools & dbachecks - https://dbatools.io/ - https://github.com/dataplat/dbachecks - 700+ powershell tools
 
-## AUTOMATION AND DevOps SQL SERVER
+dbatools is a powerful, open-source PowerShell module designed specifically for SQL Server professionals. It acts as a command-line toolkit that automates database administration tasks, making it an indispensable tool for Database Administrators (DBAs) and DevOps engineers. I
 
+If you are looking to master this tool, the definitive guide is the book ***Learn dbatools in a Month of Lunches***, published by Manning Publications.
 
-### dbatools : Ok
-	https://dbatools.io/, 700+ powershell tools : Ok
-	Livre : Learn dbatools in a Month of Lunches : Ok
+I use it particularly for checking configurations and synchronization. Some of my favorite scripts are:
 
+- ***Update-DbaBuildReference***, ***Get-DbaBuildReference***, ***Test-DbaBuild*** to check patching policies and ensure version compliance.
+- ***Get-DbaDbOrphanUser*** to audit my Availability Groups and ensure that all database users are correctly mapped to logins across every replica.
+- ***Get-DbaBackupInformation***, ***Get-DbaDbBackupHistory** to inspect backup files directly and audit past backup activity.
+- ***Export-DbaDacPackage***, ***Publish-DbaDacPackage*** to handle database schemas as portable files (DACPAC)
+- ***Invoke-DbcCheck*** to trigger the validation suite against my instances.
 
 
 
