@@ -1,7 +1,7 @@
 ---
-title: "HammerDB"
+title: "HammerDB in Docker"
 date: 2026-05-18
-summary: "Deploy HammerDB in a container and simulate workload against a SQL Server instance"
+summary: "Deploy HammerDB in a Docker container and simulate workload against a SQL Server instance"
 ---
 
 This article covers the following steps:
