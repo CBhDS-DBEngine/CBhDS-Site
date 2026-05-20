@@ -14,15 +14,14 @@ This article covers the following steps:
 - A couple of examples
 
 
-1/ PowerShell Image
-
+## 1/ PowerShell Image
 
 
 ```bash 
 CMD> docker run -id --name dbatools mcr.microsoft.com/powershell:lts-ubuntu-22.04 pwsh
 ```
 
-2/ dbatools installation 
+## 2/ dbatools installation 
 
 To execute on the container:
 ```bash 
@@ -34,7 +33,7 @@ Verification :
 PS> Get-Command -Module dbatools -Name Connect-DbaInstance
 ```
 
-3/ Connection passphrase.
+## 3/ Connection passphrase.
 
 In my configuration, the SQL Server instance runs in another container named mssql2025 and the port is 1468. 
 
@@ -50,7 +49,7 @@ And to bypass ceetificates:
 $server = Connect-DbaInstance -SqlInstance "host.docker.internal,1468" -SqlCredential $cred -TrustServerCertificate
 ```
 
-4/ Examples
+### 4/ Examples
 
 Db list:
 ```bash
