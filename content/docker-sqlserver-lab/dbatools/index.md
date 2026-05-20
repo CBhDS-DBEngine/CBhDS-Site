@@ -1,6 +1,5 @@
 ---
 title: "dbatools (including dbachecks) in Docker"
-date: 2026-05-15
 summary: "Deploy dbatools in a dedicated Docker container to connect to SQL Server"
 ---
 
