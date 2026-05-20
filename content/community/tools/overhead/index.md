@@ -60,6 +60,7 @@ I use it particularly for checking configurations and synchronization. Some of m
 - ***Export-DbaDacPackage***, ***Publish-DbaDacPackage*** to handle database schemas as portable files (DACPAC)
 - ***Invoke-DbcCheck*** to trigger the validation suite against my instances.
 
+Find practical examples and usage scenarios here: https://cbhds-dbengine.github.io/CBhDS-Site/community/tools/dbatools/
 
 
 
