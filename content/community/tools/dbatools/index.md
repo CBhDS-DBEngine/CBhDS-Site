@@ -21,7 +21,7 @@ $server = Connect-DbaInstance -SqlInstance "host.docker.internal,1468" -SqlCrede
 ```
 ## 2/ Usage
 
-### Db list
+### Db list - I use this command to check my connection, in fact. 
 ```bash 
 PS /> Get-DbaDatabase -SqlInstance $server                                                                               
 ComputerName       : host.docker.internal
@@ -38,12 +38,12 @@ Collation          : SQL_Latin1_General_CP1_CI_AS
 ...
 ```
 
-### Db list with selected columns
+### Db list with selected columns - An example to select a subset of information
 ```bash 
 PS> Get-DbaDatabase -SqlInstance $server -ExcludeSystem | Select Name, Size, LastFullBackup
 ```
 
-### Instance properties
+### Instance properties - Useful for deploying additional instances across environments to ensure configuration consistency.
 ```bash 
 PS /> Get-DbaInstanceProperty  -SqlInstance $server
 
@@ -63,7 +63,7 @@ PropertyType : Information
 ...
 ```
 
-### Tables list
+### Tables list - Well ...
 ```bash 
 PS> (Get-DbaDbTable -SqlInstance $server -Database tpcc).Columns | Select-Object Parent, Name, DataType
 Parent           Name           DataType
@@ -80,9 +80,13 @@ Parent           Name           DataType
 ...
 ```
 
-### Patching reference
+### Patching reference - Useful for quickly comparing the current config state with the target patch.
+First, generate the patch reference base.
 ```bash 
 PS> Update-DbaBuildReference
+```
+Display current patch level and version
+```bash 
 PS> Get-DbaBuildReference -SqlInstance $server
 SqlInstance    : mssql2025
 Build          : 17.0.1000
@@ -96,8 +100,7 @@ ReleaseDate    : 11/18/2025 12:00:00 AM
 MatchType      : Exact
 Warning        :
 ```
-
-### Level check
+Testing and compliance command - the ultimate judge of your configuration
 ```bash 
 PS> Test-DbaBuild -SqlInstance $server -Latest
 Build          : 17.0.1000
@@ -133,7 +136,7 @@ SupportedUntil : 1/6/2036 12:00:00 AM
 Warning        :
 ```
 
-### Error Log
+### Error Log - Quick retrieval of the last few minutes
 ```bash 
 PS > $splatGetErrorLog = @{
         SqlInstance = $server
@@ -142,12 +145,14 @@ PS > $splatGetErrorLog = @{
 PS> Get-DbaErrorLog @splatGetErrorLog | Select LogDate, Source, Text
 ```
 
-### Orphaned users
+### Orphaned users - Ah, one of my favorite commands. 
+Every SQL Server DBA has faced orphaned users especially after a cluster failover. This command allows you to check for them.
 ```bash 
-Get-DbaDbOrphanUser -SqlInstance $server
+PS> Get-DbaDbOrphanUser -SqlInstance $server -Database $db
+PS> Repair-DbaOrphanUser -SqlInstance $server -Database $db
 ```
 
-### Backups
+### Backups - It’s my go-to for auditing backup retention and ensuring everything is running as scheduled. 
 ```bash 
 PS> Get-DbaBackupInformation -SqlInstance $server -Path /var/opt/mssql/bak -Database tpcc                             
 SqlInstance Database Type         TotalSize DeviceType Start                   Duration End                             
@@ -201,7 +206,7 @@ BackupFiles    : {/var/opt/mssql/bak/mssql2025/tpcc/FULL/mssql2025_tpcc_FULL_202
                  /var/opt/mssql/bak/mssql2025/tpcc/LOG/mssql2025_tpcc_LOG_20260508_083553.trn…}
 ```
 
-### Jobs
+### Jobs - Useful for quickly listing jobs and their last execution.
 ```bash 
 PS> Get-DbaAgentJob -SqlInstance $server
 ComputerName           : host.docker.internal
@@ -232,7 +237,7 @@ mssql2025   DatabaseBackup - USER_DATABASES - DIFF   5/8/2026 7:32:09 AM       S
 mssql2025   DatabaseBackup - USER_DATABASES - FULL   5/8/2026 7:31:37 AM       Succeeded
 ```
 
-### Jobs timeline
+### Jobs timeline - Great for getting a clear visual overview.
 ```bash 
 PS> $threeDaysAgo = [datetime]::Today.AddDays(-3)
 PS> Find-DbaAgentJob -SqlInstance $server |
@@ -241,7 +246,9 @@ ConvertTo-DbaTimeline |
 Out-File -FilePath /tmp/jobs.html -Encoding ASCII
 ```
 
-### PII
+### PII - I’m sure you’ve been asked this before: 'Do we have credit card data stored in the database?' 
+
+This command isn't a silver bullet, but it can provide some initial answers.
 ```bash 
 PS> Invoke-DbaDbPiiScan -SqlInstance $server -Database tpcc  
                                                                                                                       
@@ -310,7 +317,8 @@ Pattern        : ([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-
 Description    : 
 ```
 
-### DACPAC
+### DACPAC - Database as Code
+Perfect for deploying instances in dev/preprod to ensure the exact same schema configuration everywhere.
 ```bash 
 PS> $splatExportDacPac = @{
   SqlInstance = $server
@@ -350,6 +358,7 @@ PS> Install-Module Pester -RequiredVersion 4.10.1 -Scope CurrentUser
 ```
 
 Usage:
+Configuration check, backup check.
 ```bash 
 PS> Invoke-DbcCheck -SqlInstance $server -Check LastFullBackup
 [09:43:26][Invoke-DbcCheckv4] 
