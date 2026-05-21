@@ -20,7 +20,7 @@ theme = "PaperMod"
   [[menu.main]]
     identifier = "cv"
     name = "CV"
-    url = "/static/CV - CBrault - hq.pdf"
+    url = "/CV-CBrault.pdf"
     weight = 2
 
 [params.assets]
