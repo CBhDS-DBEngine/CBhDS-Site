@@ -17,5 +17,11 @@ theme = "PaperMod"
     url = "https://www.linkedin.com/in/chbrault-dba/"
     weight = 1
 
+  [[menu.main]]
+    identifier = "cv"
+    name = "CV"
+    url = "/CV - CBrault - hq.pdf"
+    weight = 2
+
 [params.assets]
 customCSS = ["css/custom.css"]
