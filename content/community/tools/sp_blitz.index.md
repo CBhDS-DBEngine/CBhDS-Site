@@ -37,3 +37,21 @@ EXEC sp_BlitzCache
 ```
 
 <img width="1140" height="529" alt="image" src="https://github.com/user-attachments/assets/eb387464-6b4b-4aed-b398-10a7a30f6fdc" />
+
+
+The *@SortOrder* parameter is used to change how sp_BlitzCache prioritises the results. It helps you focus on the specific type of resource pressure your server is experiencing.
+
+For instance, if the server is experiencing high processor usage, run the check sorted by CPU: *EXEC sp_BlitzCache @SortOrder = 'cpu';*
+If you are seeing high 'Page I/O' waits, it is better to sort by reads to find the queries scanning the largest tables: *EXEC sp_BlitzCache @SortOrder = 'reads';*
+
+```bash
+EXEC sp_BlitzCache @SortOrder = 'cpu';
+```
+
+## Analysis Since Last Restart
+If you want to investigate performance issues that have occurred since the server was last booted—rather than just a real-time snapshot—use the @SinceStartup parameter:
+```bash 
+EXEC sp_BlitzFirst @SinceStartup = 1;
+```
+<img width="1099" height="576" alt="image" src="https://github.com/user-attachments/assets/8f711488-882d-402d-80f1-3d547514cafd" />
+
