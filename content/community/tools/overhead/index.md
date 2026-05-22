@@ -17,7 +17,7 @@ In the world of SQL Server performance tuning, these two scripts are often the f
 - ***sp_BlitzCache***: Find the Most Resource-Intensive Queries
 - ***sp_Blitz***: The next natural step to check the entire configuration.
 
-Look at my page [First Responder Kit & sp_WhoIsActive in Practice](/community/tools/realtime/)
+Look at my page [First Responder Kit & sp_WhoIsActive in Practice]({{< relref "/community/tools/realtime/index.md" >}})
 
 Remaining scripts :
 
@@ -33,7 +33,7 @@ Remaining scripts :
 
 `While my first reflex is to check the server-wide health ***sp_BlitzFirst***, my second reflex is query-centric. I use ***sp_WhoIsActive*** to zoom in on active sessions...`
 
-Look at my page [First Responder Kit & sp_WhoIsActive in Practice](/community/tools/realtime/)
+Look at my page [First Responder Kit & sp_WhoIsActive in Practice]({{< relref "/community/tools/realtime/index.md" >}})
 
 
 ## PREVENTIVE MAINTENANCE, AUTOMATION AND DevOps SQL SERVER
