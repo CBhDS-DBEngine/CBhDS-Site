@@ -28,6 +28,51 @@ EXEC sp_BlitzFirst @ExpertMode = 1;
 
 <img width="1091" height="585" alt="image" src="https://github.com/user-attachments/assets/c0e968c3-d9c1-42b4-be0a-f258960dd119" />  
 
+In parallel, I use this *sp_WhoIsActive* statement:
+
+Note: this is the generic SQL query with the default options, which saves me from having to retype the same query.
+
+```bash 
+EXEC sp_WhoIsActive
+    @filter = '',
+    @filter_type = 'session',
+    @not_filter = '',
+    @not_filter_type = 'session',
+    @show_own_spid = 0, -- Generally not very interesting 
+    @show_system_spids = 0, -- Generally not very interesting 
+    @show_sleeping_spids = 1, -- For sure !
+    @get_full_inner_text = 0, -- Text of the statement that is currently running, 1 to see the entire batch
+    @get_plans = 0,  -- Get the plan for the currently running statement (1), the entire batch (2)
+    @get_outer_command = 0, -- 1: WAITFOR ?, rebuild Index ?
+    @get_transaction_info = 0,
+    @get_task_info = 1, -- 2: Complete wait info with @get_additional_info =1 for wait 
+    @get_additional_info = 0, -- 1: Add  [additional_info] 
+    @get_locks = 0,
+    @get_avg_time = 0, -- 1: Add Compare with previous exec if there
+    @find_block_leaders = 1,
+    @delta_interval = 0, --  5: Compare 2 executions
+    @output_column_list = '[dd%][login_name][session_id][sql_text][sql_command][wait_info][tasks][status][block%][tran_log%][cpu%][reads%][writes%][context%][physical%][query_plan][locks][%]',
+    -- @output_column_list = '[dd%][login_name][session_id][sql_text][sql_command][wait_info][tasks][status][block%][tran_log%][cpu%][temp%][reads%][writes%][context%][physical%][query_plan][locks][%]',
+    @sort_order = '[start_time] ASC',
+    @format_output = 1,
+    @destination_table = '',
+    @return_schema = 0,
+    @schema = NULL,
+    @help = 0
+```
+<img width="1075" height="222" alt="image" src="https://github.com/user-attachments/assets/097d1084-9991-4cfd-a6ab-50e57fcd2479" />
+
+And here, we can see a lock chain: session 60 is blocking session 102, which in turn is blocking several other sessions (LCK_M_U waits) and I'll probably executes next:
+
+```bash 
+EXEC sp_WhoIsActive
+    @filter = 60,
+    @get_full_inner_text = 1,
+    @get_plans = 1,
+    @find_block_leaders = 1,
+    @get_transaction_info = 1,
+    @get_outer_command = 1
+```
 
 ## Post-mortem analysis and proactive tuning
 While sp_BlitzFirst tells you what's happening right now, sp_BlitzCache looks at the "memory" of your SQL Server (the Plan Cache) to show you which queries have been the most problematic since the last restart or cache clear.
