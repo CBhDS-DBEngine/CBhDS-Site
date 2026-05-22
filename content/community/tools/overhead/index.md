@@ -17,6 +17,8 @@ In the world of SQL Server performance tuning, these two scripts are often the f
 - ***sp_BlitzCache***: Find the Most Resource-Intensive Queries
 - ***sp_Blitz***: The next natural step to check the entire configuration.
 
+Look at my page [First Responder Kit & sp_WhoIsActive in Practice](../realtime/index.md)
+
 Remaining scripts :
 
 - *sp_BlitzIndex*: Tune Your Indexes
@@ -30,6 +32,9 @@ Remaining scripts :
 ***sp_WhoIsActive*** is query-centric. It allows you to zoom in on every active session to see precisely what it's doing, how much resource it's consuming, and why it's slow. This tool provides *granular, real-time visibility*allowing you to drill down into specific problems using its many advanced options.
 
 `While my first reflex is to check the server-wide health ***sp_BlitzFirst***, my second reflex is query-centric. I use ***sp_WhoIsActive*** to zoom in on active sessions...`
+
+Look at my page [First Responder Kit & sp_WhoIsActive in Practice](../realtime/index.md)
+
 
 ## PREVENTIVE MAINTENANCE, AUTOMATION AND DevOps SQL SERVER
 
