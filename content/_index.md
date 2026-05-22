@@ -14,6 +14,6 @@ No buzzwords or long speeches here — only practical.
 
 - [Docker & SQL Server Lab](docker-sqlserver-lab/)
 - [Community Resources for SQL Server](community/)
-- [Automation](automation/)
+- [Automation/IaC/DaC](automation/)
 
 ## Articles
