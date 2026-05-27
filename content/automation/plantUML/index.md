@@ -24,19 +24,9 @@ PlantUML enables teams to automate and standardize technical documentation throu
 
 In my view, once the tool's limitations are understood, it allows for highly efficient architecture documentation, particularly when deploying recurring design patterns. Furthermore, its seamless integration with platforms like Confluence helps cut down on licensing costs for proprietary software like Visio.
 
-## AG example3
-Below is a PlantUML example describing an AG (Availability Group) configuration with replication and DAG. Typically, to avoid the "Spaghetti" Effect, probably the Shared Backup feature should be described in another file.
+## PlantUM AG example
+Below is a PlantUML example describing an Always On cluster configuration with AG groups, replication and DAG. Typically, to avoid the "Spaghetti" Effect, probably the Shared Backup feature should be described in another file.
 
 `Note: Online UML tools often impose strict limits on diagram size and element counts. In this case, you can use Niolesk to handle larger diagrams.`
 
-1
-
 [AAG example](/CBhDS-Site/PlantUML-AAG.txt)
-
-2
-
-[AAG example]({{< relref "PlantUML-AAG.txt" >}})
-
-3
-
-[AAG example](PlantUML-AAG.txt)
