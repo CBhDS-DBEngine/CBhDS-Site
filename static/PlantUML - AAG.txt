@@ -1,0 +1,328 @@
+@startuml
+'title SQL Server AAG
+
+' ==========================================================
+' CBhDS 2026 - https://cbhds-dbengine.github.io/CBhDS-Site/
+' ==========================================================
+
+
+' --- Icons ---
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/microchip>
+!include <tupadr3/font-awesome-5/file_alt>
+!include <tupadr3/font-awesome-5/bomb>
+!include <tupadr3/font-awesome-5/coins>
+!include <tupadr3/font-awesome-5/file_import>
+!include <tupadr3/font-awesome-5/folder>
+!include <tupadr3/font-awesome-5/marker>
+!include <tupadr3/font-awesome-5/map_signs>
+!include <tupadr3/font-awesome-5/cogs>
+!include <tupadr3/font-awesome-5/sync>
+!include <tupadr3/font-awesome-5/brain>
+!include <tupadr3/font-awesome-5/plane_arrival>
+!include <tupadr3/font-awesome-5/plane_departure>
+!include <tupadr3/font-awesome-5/globe>
+!include <tupadr3/font-awesome-5/crop_alt>
+!include <tupadr3/font-awesome-5/staylinked>
+!include <tupadr3/font-awesome-5/file_archive>
+!include <tupadr3/font-awesome-5/share_alt>
+
+skinparam package<<Big>> {
+  FontStyle bold
+  FontSize 24
+}
+
+skinparam Component<<Cig>> {
+  FontStyle bold
+  FontSize 24
+}
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+left to right direction
+
+' DAG
+
+  package "DAG" #C78F00{
+      component "<$globe>\nCluster: ClusterName\nInstance : Instancename1\nAAGGroup: AAGGroup1" as DAAG1 #FFCC00
+      component "<$globe>\nCluster: ClusterName\nInstance : Instancename2\nAAGGroup: AAGGroup2" as DAAG2 #FFCC00
+      component "<$globe>\nCluster: ClusterName\nInstance : Instancename3\nAAGGroup: AAGGroup3" as DAAG3 #FFCC00
+      component "<$globe>\nCluster: ClusterName\nInstance : Instancename4\nAAGGroup: AAGGroup4" as DAAG4 #FFCC00
+      note as noteaag #E8B8AC
+        <$marker> "Target AAG Groups" 
+      end note
+  }
+
+
+' =============================================
+' Replication
+  package "Replications" #C78F00{
+    package "Publishers" as RepliNodesSource #F8B500  {
+      rectangle "<$sync>\n<b>Publishers :</b>\nDBName1\nDBName2\nDBName3\nDBName4\nDBName5\nDBName6\nDBName7\nDBName8\n<b>Distributor :</b>\nInst : DistInstance \nBase : DistDBName\nDirectory : \\\DistFileShare" as RepliInst1 #FFCC00
+    }
+    package "Subscribers" as RepliNodesTarget #F8B500  {
+      rectangle "<$sync>\n<b>Target Databases :</b> xxxx" as TargetInst1 #FFCC00
+    }
+  }
+
+
+' ==============================
+
+        package "Cluster AAG - ClusterName" as Infra <<Big>> #C78F00 {
+
+            package "Nodes" as MyNodes <<Big>> #F8B500 {      
+
+              component "<$microchip>\nNode1" <<Big>> as Node2b #FFCC00 {
+                 
+                 ' INSTANCE 1
+                  frame "\nSQLInstance1" <<Big>> as BigSQL1b #FFFF99 {
+                    component "<$server>\nSQL Instance SQLInstance1" as SQL1b
+                    component "<$coins>\nTempdb" as Temp1b
+                    component "<$coins>\nSystem db" as Sys1b
+                    component "<$coins>\nUsers db" as DB1b
+                    component "<$file_import>\nBackups" as BCK1b
+                    component "<$file_import>\nBackups" as BCK1b2
+  
+                    frame "Local Disks" as Disks1b0 #D3D3D3 {
+                      frame "Local Disks for TEMPDB & SYSTEM" as Disks1b1 #D3D3D3 {
+                        label "<$database>\nDisk1_TEMPDB (MountPoint1:\)\n(Part of Disk0)" as Disks1b11 #D3D3D3                
+                        label "<$database>\nDisk2_SYSDB (MountPoint2:\)" as Disks1b12 #D3D3D3                 
+                      }
+                      frame "Local Disks for AAGGroup1" as Disks1b2 #D3D3D3 {
+                        label "<$database>\nAAGGroup1_MOUNTPOINT (MountPoint:\)" as Disks1b21  #D3D3D3
+                        label "<$database>\nAAGGroup1_DATA01\n(Mount on MountPoint:\xxx)" as Disks1b22 #D3D3D3
+                        label "<$database>\nAAGGroup1_DATA02\n(Mount on MountPoint:\xxx)" as Disks1b23 #D3D3D3
+                        label "<$database>\nAAGGroup1_INDEX\n(Mount on MountPoint:\xxx)" as Disks1b24 #D3D3D3
+                        label "<$database>\nAAGGroup1_LOG\n(Mount on MountPoint:\xxx)" as Disks1b25 #D3D3D3
+                        label "<$database>\nAAGGroup1_REPL_DATA\n(Mount on MountPoint:\xxx)" as Disks1b26 #D3D3D3
+                      }
+                      frame "Local Disks for AAGGroup2" as Disks1b3 #D3D3D3 {
+                        label "<$database>\nAAGGroup2_MOUNTPOINT (MountPoint:\)" as Disks1b31 #D3D3D3
+                        label "<$database>\nAAGGroup2_BLOB\n(Mount on MountPoint:\xxx)" as Disks1b32 #D3D3D3
+                        label "<$database>\nAAGGroup2_DATA\n(Mount on MountPoint:\xxx)" as Disks1b33 #D3D3D3
+                        label "<$database>\nAAGGroup2_LOG\n(Mount on MountPoint:\xxx)" as Disks1b34 #D3D3D3
+                        label "<$database>\nAAGGroup2_INDEX\n(Mount on MountPoint:\xxx)" as Disks1b35 #D3D3D3
+                      }
+                      frame "Local Disks for AAGGroup3" as Disks1b4 #D3D3D3 {
+                        label "<$database>\nAAGGroup3_MOUNTPOINT (MountPoint:\)" #D3D3D3
+                        label "<$database>\nAAGGroup3_BLOB\n(Mount on MountPoint:\xxx)" as Disks1b41 #D3D3D3
+                        label "<$database>\nAAGGroup3_DATA\n(Mount on MountPoint:\xxx)" as Disks1b42 #D3D3D3
+                        label "<$database>\nAAGGroup3_INDEX\n(Mount on MountPoint:\xxx)" as Disks1b43 #D3D3D3
+                        label "<$database>\nAAGGroup3_LOG\n(Mount on MountPoint:\xxx)" as Disks1b44 #D3D3D3
+                      }
+                      frame "Local Disks for AAGGroup4" as Disks1b5 #D3D3D3 {
+                        label "<$database>\nAAGGroup4_MOUNTPOINT (MountPoint:\)" #D3D3D3
+                        label "<$database>\nAAGGroup4_BLOB\n(Mount on MountPoint:\xxx)" as Disks1b51 #D3D3D3
+                        label "<$database>\nAAGGroup4_DATA\n(Mount on MountPoint:\xxx)" as Disks1b52 #D3D3D3
+                        label "<$database>\nAAGGroup4_INDEX\n(Mount on MountPoint:\xxx)" as Disks1b53 #D3D3D3
+                        label "<$database>\nAAGGroup4_LOG\n(Mount on MountPoint:\xxx)" as Disks1b54 #D3D3D3
+                      }
+                    }
+                    frame "Mount Points" as Mount1b #FFFFFF {
+                      rectangle "<$folder>\nMountPoint1:\" as Mount1_I1b #FFFFFF
+                      rectangle "<$folder>\nMountPoint3:\" as Mount2_I1b #FFFFFF
+                      rectangle "<$folder>\nMountPoint2:\" as Mount3_I1b #FFFFFF
+                      rectangle "<$folder>\nMountPoint4:\" as Mount4_I1b #FFFFFF
+                      rectangle "<$folder>\nMountPoint5:\" as Mount5_I1b #FFFFFF
+                      rectangle "<$folder>\nMountPoint6:\" as Mount6_I1b #FFFFFF
+                    }
+
+                    ' Dependencies
+             
+                    Sys1b --> Mount5_I1b
+                    DB1b -[#green,thickness=2]-> Mount1_I1b : <color:green>AAGGroup AAGGroup1</color>
+                    DB1b -[#green,thickness=2]-> Mount2_I1b : <color:green>AAGGroup AAGGroup2</color>
+                    DB1b -[#green,thickness=2]-> Mount3_I1b : <color:green>AAGGroup AAGGroup3</color>
+                    DB1b -[#green,thickness=2]-> Mount4_I1b : <color:green>AAGGroup AAGGroup4</color>
+                    Temp1b --> Mount6_I1b
+                    SQL1b --> Temp1b
+                    SQL1b --> Sys1b
+                    SQL1b --> DB1b
+                    SQL1b --> Disks1b0
+                    Sys1b -[#blue,thickness=2]-> BCK1b :  <color:blue><$cogs>\nBackup Jobs - SYSTEM backups\n(\\\BackupShared\)</color>
+                  }
+
+
+
+
+              ' REMAINING DISKS 
+              frame "Local Disk" as IZ_1b #D3D3D3{
+                    label "<$database>\nLocalDisk\n(Part of Disk0)" as L2b
+                    } 
+                    frame "Local Mount Point" as Z1b #FFFFFF {
+                      rectangle "<$folder>\nLocalMountPoint:\" as Z1Lb #FFFFFF
+                     }
+                IZ_1b --> Z1b
+                note as note1b #E8B8AC
+                <$marker> Preferred PRIMARY node for AAG groups\n
+                end note 
+               }
+               
+              component "<$microchip>\nNode2" <<Big>> as Node1a #FFCC00 {
+              
+                  ' INSTANCE 2
+                  frame "\nSQLInstance2" <<Big>> as BigSQL1a #FFFF99 {
+                    component "<$server>\nSQLInstance2" as SQL1a
+                    component "<$coins>\nTempdb" as Temp1a
+                    component "<$coins>\nSystem db" as Sys1a
+                    component "<$coins>\nUsers db" as DB1a
+                    component "<$file_import>\nBackups" as BCK1a
+                    component "<$file_import>\nBackups" as BCK1a2
+  
+                    frame "Local Disks" as Disks1a0 #D3D3D3 {
+                      frame "Local Disks for TEMPDB & SYSTEM" as Disks1a1 #D3D3D3 {
+                        label "<$database>\nMountPoint_TEMPDB (Local Mount Point1:\)\n(Part of Disk0)" #D3D3D3                
+                        label "<$database>\nMountPoint_SYSDB (Local Mount Point1:\)" #D3D3D3                 
+                      }
+                      frame "Local Disk for AAGGroupAAGGroup1" as Disks1a2 #D3D3D3 {
+                        label "<$database>\nAAGGroup1_MOUNTPOINT (MountPoint:\)" #D3D3D3
+                        label "<$database>\nAAGGroup1_BLOB01\n(Mount on MountPoint:\yyy)" #D3D3D3
+                        label "<$database>\nAAGGroup1_DATA\n(Mount on MountPoint:\yyy)" #D3D3D3
+                        label "<$database>\nAAGGroup1_BLOPB02\n(Mount on MountPoint:\yyy)" #D3D3D3
+                        label "<$database>\nAAGGroup1_LOG\n(Mount on MountPoint:\yyy)" #D3D3D3
+                        label "<$database>\nAAGGroup1_REPL_DATA\n(Mount on MountPoint:\yyy)" #D3D3D3
+                      }
+                      frame "Local Disk for AAGGroup AAGGroup2" as Disks1a3 #D3D3D3 {
+                        label "<$database>\nAAGGroup2_MOUNTPOINT (MountPoint:\)" #D3D3D3
+                        label "<$database>\nAAGGroup2_INDEX02\n(Mount on MountPoint:\zzz)" #D3D3D3
+                        label "<$database>\nAAGGroup2_DATA\n(Mount on MountPoint:\zzz)" #D3D3D3
+                        label "<$database>\nAAGGroup2_INDEX01\n(Mount on MountPoint:\zzz)" #D3D3D3
+                        label "<$database>\nAAGGroup2_LOG\n(Mount on MountPoint:\zzz)" #D3D3D3
+                      }
+                      frame "Local Disk for AAGGroup AAGGroup3" as Disks1a4 #D3D3D3 {
+                        label "<$database>\nAAGGroup3_MOUNTPOINT (MountPoint:\)" #D3D3D3
+                        label "<$database>\nAAGGroup3_BLOB\n(Mount on MountPoint:\zzz)" #D3D3D3
+                        label "<$database>\nAAGGroup3_DATA\n(Mount on MountPoint:\zzz)" #D3D3D3
+                        label "<$database>\nAAGGroup3_INDEX\n(Mount on MountPoint:\zzz)" #D3D3D3
+                        label "<$database>\nAAGGroup3_LOG\n(Mount on MountPoint:\zzz)" #D3D3D3
+                      }
+                      frame "Local Disk for AAGGroupAAGGroup4" as Disks1a5 #D3D3D3 {
+                        label "<$database>\nAAGGroup4_MOUNTPOINT (MountPoint:\)" #D3D3D3
+                        label "<$database>\nAAGGroup4_DATA02\n(Mount on MountPoint:\ttt)" #D3D3D3
+                        label "<$database>\nAAGGroup4_DATA01\n(Mount on MountPoint:\ttt)" #D3D3D3
+                        label "<$database>\nAAGGroup4_INDEX\n(Mount on MountPoint:\ttt)" #D3D3D3
+                        label "<$database>\nAAGGroup4_LOG\n(Mount on MountPoint:\ttt)" #D3D3D3
+                      }
+                    }
+
+                    frame "Mount Points" as Mount1a #FFFFFF {
+                      rectangle "<$folder>\nMountPoint:\" as Mount1_I1a #FFFFFF
+                      rectangle "<$folder>\nMountPoint:\" as Mount2_I1a #FFFFFF
+                      rectangle "<$folder>\nMountPoint:\" as Mount3_I1a #FFFFFF
+                      rectangle "<$folder>\nMountPoint:\" as Mount4_I1a #FFFFFF
+                      rectangle "<$folder>\nMountPoint:\" as Mount5_I1a #FFFFFF
+                      rectangle "<$folder>\nMountPoint:\" as Mount6_I1a #FFFFFF
+                    }
+
+                    ' Dependencies
+
+                    Sys1a --> Mount2_I1a
+                    DB1a -[#green,thickness=2]-> Mount1_I1a : <color:green>AAGGroup AAGGroup1</color>
+                    DB1a -[#green,thickness=2]-> Mount3_I1a : <color:green>AAGGroup AAGGroup2</color>
+                    DB1a -[#green,thickness=2]-> Mount4_I1a : <color:green>AAGGroup AAGGroup3</color>
+                    DB1a -[#green,thickness=2]-> Mount5_I1a : <color:green>AAGGroup AAGGroup4</color>
+                    Temp1a --> Mount6_I1a
+                    SQL1a --> Temp1a
+                    SQL1a --> Sys1a
+                    SQL1a --> DB1a
+                    SQL1a --> Disks1a0
+                    Sys1a -[#blue,thickness=2]-> BCK1a : <color:blue><$cogs></color>\nSYSTEM Backup Jobs\n(\\\SharedForBackups\)
+                  }
+
+                     
+              ' REMAINING DISKS 
+              frame "Local Disks" as IZ_1a #D3D3D3{
+                    label "<$database>\nLocalDiskName\n(Part of Disk0)" as L2a
+                    } 
+                    frame "Local Mount Point" as Z1a #FFFFFF {
+                      rectangle "<$folder>\nLocalMountPoint:\" as Z1La #FFFFFF
+                     }
+                IZ_1a --> Z1a
+            } 
+        }
+
+        ' BACKUP
+       package "Cluster role Role1 (Backups)" as BCkUser <<Big>> #F8B500   {
+        frame "Clustered Disk" as DiskBck1 #D3D3D3{
+            label "<$database>\nggg_BACKUP" as DiskBck1a
+        } 
+        frame "Mount Points for BACKUP SYSTEM & USERS" as MountBck2 #FFFFFF {
+            rectangle "<$folder>\nBackupMountPoint:\" as MountBck2a #FFFFFF
+            rectangle "<$folder>\nBackupMountPoint:\fff_BACKUP\fff\nFor SYSTEM Backups Instancename" as MountBck2a1 #FFFFFF
+            rectangle "<$folder>\nBackupMountPoint:\yyy_BACKUP\vvv\nFor SYSTEM Backups Instancename" as MountBck2a2 #FFFFFF
+            rectangle "<$folder>\nBackupMountPoint:\vvv_BACKUP\ggg\nFor Users backups Instancename" as MountBck2a3 #FFFFFF
+        }
+        frame "File Server (\\\FileServerName)" as CFS1 #FFFFFF{
+            label "<$share_alt>\n\\\FileServerName\bbbb_backup" as CFS11
+       } 
+
+   
+      
+        DiskBck1 --> MountBck2a
+
+        MountBck2a --> MountBck2a1
+        MountBck2a --> MountBck2a2
+        MountBck2a --> MountBck2a3
+      
+
+        CFS1 -up[#blue,thickness=2]-> MountBck2a1
+        CFS1 -[#blue,thickness=2]-> MountBck2a2
+        CFS1 -[#blue,thickness=2]-> MountBck2a3
+
+        BCK1a -[#blue,thickness=2]-> CFS1 : <color:blue>Via shared</color>
+        BCK1b -[#blue,thickness=2]-> CFS1 : <color:blue>Via shared</color>
+        }
+
+        ' GROUPES AAG
+         package "AAG Groups" <<Big>> as AAGgroups1 #F8B500 {
+            component "<$crop_alt>\nAAGGroupAAGGroup1\nInstance : InstanceName\nListener : ListenerName\nPrefered primary node : Node1" as AAG1 #FFCC00
+            component "<$crop_alt>\nAAGGroupAAGGroup2\nInstance : InstanceName\nListener : ListenerName\nPrefered primary node : Node2" as AAG2 #FFCC00
+            component "<$crop_alt>\nAAGGroupAAGGroup3\nInstance : InstanceName\nListener : ListenerName\nPrefered primary node : Node1" as AAG3 #FFCC00
+            component "<$crop_alt>\nAAGGroupAAGGroup4\nInstance : InstanceName\nListener : ListenerName\nPrefered primary node : Node2" as AAG4 #FFCC00
+         note as note1aag #E8B8AC
+                <$marker> Preferred BACKUP node for AAG groups = PRIMARY
+        end note 
+        note as note2aag #E8B8AC
+                <$marker> All groups in SYNCHRONOUS/AUTOMATIC mode
+        end note 
+        }
+    
+        ' QUORUM
+         package "<$brain>\Clustered Disk - Quorum Disk (Q:\)" <<Big>> as Quorum #F8B500
+        Quorum -[hidden]-> AAG1
+    }
+
+  'FAILOVER
+  Node2b --> Node1a : <$map_signs>\nAll groups in\nAUTOMATIC FAILOVER mode
+  
+  'BCK USERS
+  
+  DB1a .up[#blue].> BCK1a2 : <color:blue><$cogs></color> \nBackups Jobs USERS\n(Using shared \\\Shared\bbb\)
+  BCK1a2 .[#blue,thickness=2].> CFS1 : <color:blue>Via shared</color> 
+  
+  DB1b -[#blue]-> BCK1b2 : <color:blue><$cogs></color> \nBackups Jobs USERS\n(Using shared \\\Shared\nnn\)
+  BCK1b2 -[#blue,thickness=2]-> CFS1 : <color:blue>Via shared</color>
+
+  'REPLICATION
+
+  BigSQL1b -up[#blue,thickness=4]-> RepliInst1 : <$plane_departure>
+  RepliInst1 -up[#blue,thickness=4]-> TargetInst1 : <$plane_arrival>
+  
+   ' DAG
+    AAG1 -[#blue,thickness=4]-> DAAG1 : <$staylinked>\nGroup DAG : DAGGroupAAGGroup1\nListener : ListenerName1
+    AAG2 -[#blue,thickness=4]-> DAAG2 : <$staylinked>\nGroup DAG : DAGGroupAAGGroup2\nListener : ListenerName2
+    AAG3 -[#blue,thickness=4]-> DAAG3 : <$staylinked>\nGroup DAG : DAGGroupAAGGroup3\nListener : ListenerName3
+    AAG4 -[#blue,thickness=4]-> DAAG4 : <$staylinked>\nGroup DAG : DAGGroupAAGGroup4\nListener : ListenerName4
+
+    
+  
+  
+  
+  
+    'skinparam linetype ortho
+
+}
+@enduml
+
