@@ -29,4 +29,4 @@ Below is a PlantUML example describing an AG (Availability Group) configuration 
 
 `Note: Online UML tools often impose strict limits on diagram size and element counts. In this case, you can use Niolesk to handle larger diagrams.`
 
-[AAG example](./PlantUMLAAG.txt)
+[AAG example](./PlantUML-AAG.txt)
