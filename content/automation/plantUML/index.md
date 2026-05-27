@@ -32,3 +32,5 @@ Below is a PlantUML example describing an AG (Availability Group) configuration 
 [AAG example](/CBhDS-Site/PlantUML-AAG.txt)
 
 [AAG example]({{< relref "PlantUML-AAG.txt" >}})
+
+[AAG example](PlantUML-AAG.txt)
