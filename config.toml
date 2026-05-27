@@ -7,7 +7,7 @@ theme = "PaperMod"
   description = "SQL Server Production Engineering"
   defaultTheme = "dark"
   ShowCodeCopyButtons = true
-  mainSections = ["docker-sqlserver-lab", "community"]
+  mainSections = ["docker-sqlserver-lab", "community","automation"]
 
 [menu]
 
