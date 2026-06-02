@@ -52,7 +52,7 @@ hammerdb>diset connection mssqls_linux_server host.docker.internal
 hammerdb>diset connection mssqls_authentication sql
 hammerdb>diset connection mssqls_tcp true
 ```
-I had issues with bcp execution, especially with the u/U paraameters. I decide to not use bcp. The build is longer to run but successful.
+I had issues with bcp execution, especially with the u/U parameters. I decided to not use bcp. The build is longer to run but successful.
 ```bash
 hammerdb>diset tpcc mssqls_use_bcp false
 ```
@@ -88,7 +88,7 @@ Building 1 Warehouses(s) with 1 Virtual User
  
 ## 5/ Generate transactions 
 
-Depending of your needs, you can change teh follwong parameters. On my side i do use 1 warehouse, and 15 users.
+Depending of your needs, you can change the following parameters. On my side i do use 1 warehouse, and 15 users.
 
 I'm able to generate running, runnable, waiting sessions and locks. 
 
