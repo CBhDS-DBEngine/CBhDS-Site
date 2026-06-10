@@ -3,6 +3,10 @@ languageCode = "fr-fr"
 title = "CBhDS - Portfolio Technique pour SQL Server"
 theme = "PaperMod"
 
+[taxonomies]
+category = "categories"
+tag = "tags"
+
 [params]
   description = "SQL Server Production Engineering"
   defaultTheme = "dark"
@@ -22,6 +26,18 @@ theme = "PaperMod"
     name = "CV"
     url = "CV-CBrault.pdf"
     weight = 2
+    
+  [[menu.main]]
+    identifier = "categories"
+    name = "Catégories"
+    url = "/categories/"
+    weight = 3
+
+  [[menu.main]]
+    identifier = "tags"
+    name = "Tags"
+    url = "/tags/"
+    weight = 4
 
 [params.assets]
 customCSS = ["css/custom.css"]
