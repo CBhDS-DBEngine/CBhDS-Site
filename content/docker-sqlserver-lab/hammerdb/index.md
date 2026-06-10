@@ -1,6 +1,9 @@
 ---
 title: "HammerDB in Docker"
 summary: "Deploy HammerDB in a Docker container and simulate workload against a SQL Server instance"
+
+categories: ["Docker"]
+tags: ["Automation", "SQL Server", "Powershell", "Hammerdb", "Workload"]
 ---
 
 This article covers the following steps:
