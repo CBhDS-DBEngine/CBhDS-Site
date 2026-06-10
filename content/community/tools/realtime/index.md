@@ -3,7 +3,7 @@ title: "First Responder Kit & sp_WhoIsActive in Practice"
 summary: "Troubleshooting and resolving issues in real-time with sp_blitz & sp_WhoIsActive"
 
 categories: ["Community Resources"]
-tags: ["sp_blitz", "sp_whoisactive", "in Practice"]
+tags: ["sp_blitz", "sp_whoisactive", "in Practice","Realtime analysis"]
 
 ---
 Keep in mind that sp_BlitzFirst runs for 5 seconds by default. You can increase this duration using the @Seconds parameter."
