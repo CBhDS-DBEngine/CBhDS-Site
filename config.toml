@@ -41,7 +41,7 @@ tag = "tags"
 
   [[menu.main]]
     identifier = "community"
-    name = "Community resoources"
+    name = "Community resources"
     url = "/community/"
     weight = 5
 
