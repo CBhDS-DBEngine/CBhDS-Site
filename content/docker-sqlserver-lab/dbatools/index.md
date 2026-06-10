@@ -1,6 +1,9 @@
 ---
 title: "dbatools (including dbachecks) in Docker"
 summary: "Deploy dbatools in a dedicated Docker container to connect to SQL Server"
+
+categories: ["Docker"]
+tags: ["Automation", "SQL Server", "Powershell", "dbatools", "dbachecks"]
 ---
 
 This article covers the following steps:
