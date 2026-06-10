@@ -2,7 +2,7 @@
 title: "dbatools & dbachecks in Practice"
 summary: "Leveraging dbatools & dbachecks for Configuration Integrity"
 
-categories: ["Automation"]
+categories: ["Automation", "Community Resources"]
 tags: ["SQL Server", "dbatools", "dbachecks", "Powershell","Configuration integrity", "Healthcheck"]
 ---
 
