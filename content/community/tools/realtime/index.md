@@ -2,7 +2,7 @@
 title: "First Responder Kit & sp_WhoIsActive in Practice"
 summary: "Troubleshooting and resolving issues in real-time with sp_blitz & sp_WhoIsActive"
 
-categories: ["Automation", "Community Resources"]
+categories: ["Community Resources"]
 tags: ["sp_blitz", "sp_whoisactive", "in Practice","Realtime analysis"]
 
 ---
