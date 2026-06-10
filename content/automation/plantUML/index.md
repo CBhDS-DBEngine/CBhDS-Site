@@ -2,6 +2,10 @@
 ---
 title: "PlantUML for DevOps Documentation in Practice"
 summary: “Diagram as Code” approach to automate, standardize, and version technical documentation."
+
+categories = ["Automation"]
+tags = ["Documentation", "PlantUML"]
+
 ---
 
 PlantUML enables teams to automate and standardize technical documentation through a “Diagram as Code” approach, where architecture and workflow diagrams are versioned, generated, and maintained directly from code alongside infrastructure and application repositories.
