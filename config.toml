@@ -28,16 +28,34 @@ tag = "tags"
     weight = 2
     
   [[menu.main]]
-    identifier = "categories"
-    name = "Catégories"
-    url = "/categories/"
+    identifier = "docker"
+    name = "Docker Lab"
+    url = "/docker-sqlserver-lab/"
     weight = 3
+
+  [[menu.main]]
+    identifier = "automation"
+    name = "Automation"
+    url = "/automation/"
+    weight = 4
+
+  [[menu.main]]
+    identifier = "community"
+    name = "Community resoources"
+    url = "/community/"
+    weight = 5
+
+  [[menu.main]]
+    identifier = "categories"
+    name = "Categories"
+    url = "/categories/"
+    weight = 6
 
   [[menu.main]]
     identifier = "tags"
     name = "Tags"
     url = "/tags/"
-    weight = 4
+    weight = 7
 
 [params.assets]
 customCSS = ["css/custom.css"]
