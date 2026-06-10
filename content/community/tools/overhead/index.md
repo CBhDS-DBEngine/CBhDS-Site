@@ -3,7 +3,7 @@ title: "Community ressources for SQL Server"
 summary: "List some important community ressources for SQL Server I use for many years"
 
 categories: ["Community Resources"]
-tags: ["Automation", "sp_blitz", "sp_whoisactive", "Ola Hallengren", "dbatools", "dbachecks","Configuration integrity", "Healthcheck"]
+tags: ["Automation", "sp_blitz", "sp_whoisactive", "Ola Hallengren", "dbatools", "dbachecks", "Configuration integrity", "Healthcheck"]
 ---
 
 Here are some of my favorite community resources that I’ve used for many years. A second article will showcase concrete use cases.
