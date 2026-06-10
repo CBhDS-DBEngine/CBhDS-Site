@@ -2,7 +2,7 @@
 title: "Community ressources for SQL Server"
 summary: "List some important community ressources for SQL Server I use for many years"
 
-categories: ["Community Resources"]
+categories: ["Automation", "Community Resources"]
 tags: ["Automation", "sp_blitz", "sp_whoisactive", "Ola Hallengren", "dbatools", "dbachecks", "Configuration integrity", "Healthcheck"]
 ---
 
