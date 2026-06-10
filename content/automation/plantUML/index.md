@@ -4,7 +4,7 @@ title: "PlantUML for DevOps Documentation in Practice"
 summary: “Diagram as Code” approach to automate, standardize, and version technical documentation."
 
 categories: ["Automation"]
-tags: ["Documentation", "PlantUML"]
+tags: ["Documentation", "PlantUML", "Documentation as Code"]
 
 ---
 
