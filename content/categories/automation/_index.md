@@ -1,5 +1,5 @@
 ---
-title: DevOps - SQL Server automation
+title: DevOps - SQL Server Automation
 date: 2026-05-18
 ---
 
