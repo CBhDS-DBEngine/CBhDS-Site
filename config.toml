@@ -36,7 +36,7 @@ tag = "tags"
   [[menu.main]]
     identifier = "automation"
     name = "Devops-Automation"
-    url = "/automation/"
+    url = "/categories/automation/"
     weight = 4
 
   [[menu.main]]
