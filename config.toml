@@ -19,7 +19,6 @@ theme = "PaperMod"
   defaultTheme = "dark"
   ShowCodeCopyButtons = true
   mainSections = ["docker-sqlserver-lab", "community","automation"]
-  googleSiteVerification = "M-Vzhx7yovt0PNdMed4QqGNEm3ayiZxHqHMVPVY8jwU"
 
 [menu]
 
