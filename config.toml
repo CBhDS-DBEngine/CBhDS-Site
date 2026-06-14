@@ -3,15 +3,23 @@ languageCode = "fr-fr"
 title = "CBhDS - Portfolio Technique pour SQL Server"
 theme = "PaperMod"
 
+# Configuration automatique du Sitemap pour Google
+[sitemap]
+  changefreq = "monthly"
+  priority = 0.5
+  filename = "sitemap.xml"
+
 [taxonomies]
-category = "categories"
-tag = "tags"
+  category = "categories"
+  tag = "tags"
 
 [params]
+  env = "production" # 2. Force PaperMod à activer l'optimisation SEO de production
   description = "SQL Server Production Engineering"
   defaultTheme = "dark"
   ShowCodeCopyButtons = true
   mainSections = ["docker-sqlserver-lab", "community","automation"]
+  googleSiteVerification = "M-Vzhx7yovt0PNdMed4QqGNEm3ayiZxHqHMVPVY8jwU"
 
 [menu]
 
