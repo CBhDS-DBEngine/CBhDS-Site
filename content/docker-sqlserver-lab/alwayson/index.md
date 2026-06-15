@@ -47,8 +47,11 @@ It's the reason the Availability Group must be created with `CLUSTER_TYPE = NONE
 
 ## 4/ Environment
 
+### Folders and files
+
 The root directory alwayson includes the following files and folders:
 
+```text
 ── 📂 alwayson         
     ├── 📂 seed-backups      
     │   └── 📄 tpcc_seed.bak        # Initial Full backup of a tpcc database (in full recovery model)
@@ -59,9 +62,11 @@ The root directory alwayson includes the following files and folders:
     ├── 📄 dockerfile             # Custom SQL Server image
     ├── ⚙️ entrypoint.sh          # Container startup initialization script
     └── 🧠 witness.sh             # Logic / Monitoring script for the simulated witness
+```
 
+### Processing
 
-
+```text
 🏁 START: docker-compose up
 └── 📦 1. dockerfile (Build Phase)
     └── ⚙️ 2. entrypoint.sh (Container Boot)
@@ -70,6 +75,9 @@ The root directory alwayson includes the following files and folders:
             ├── 🗄️ 4b. alwayson_secondary.sql ──┤  replica identity)
             │   └── 📂 seed-backups/          ──┘ (Restored on secondary)
             └── 🧠 5. witness.sh (Continuous Monitoring)
+
+```
+### Files review
 
 *docker-compose.yml*
 
