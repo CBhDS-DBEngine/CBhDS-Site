@@ -140,7 +140,7 @@ The root directory alwayson includes the following files and folders:
 PS [YourFolder]\alwayson> docker compose build --no-cache
 ```
 
-See the output in :
+See the output in : [docker_build.output](always/docker_build.output)
 
 
     Note on "SQL Server needs to be restarted" messages:
@@ -151,9 +151,8 @@ See the output in :
     #11 DONE 0.6s
     
     You can safely ignore it.
-
-During docker build, SQL Server isn't running, so mssql-conf prints this standard warning.
-However, the setting is written to the config file. When your container boots up via docker-compose up, SQL Server starts fresh, reads the file, and automatically enables the Agent and HADR right away. No manual restart is needed.
+    During docker build, SQL Server isn't running, so mssql-conf prints this standard warning.
+    However, the setting is written to the config file. When your container boots up via docker-compose up, SQL Server start fresh, reads the file, and automatically enables the Agent and HADR right away. No manual restart is needed.
 
 ```bash 
 PS [YourFolder]\alwayson> docker compose up -d                                 
@@ -180,8 +179,11 @@ PS [YourFolder]\alwayson> docker logs aag-witness -f
 
 The outputs are in the files:
 
+[docker_logs_mssqlaagnode1.output](always/docker_logs_mssqlaagnode1.output)
+[docker_logs_mssqlaagnode2.output](always/docker_logs_mssqlaagnode1.output)
+[docker_logs_aag-witness.output](always/docker_logs_aag-witness.output)
 
-At the end we have
+At the end we have an healthy cluster:
 
 ![Cluster Healthy Status](static/alwayson/healthy.png)
 
@@ -190,19 +192,16 @@ At the end we have
 ![Primary Node Status](static/alwayson/healthy_primary.png)
 
 
-If you encounter any problems and need to reset everything, I recommend...
-
-```bash 
-PS [YourFolder]\alwayson> docker compose down -v    
-time="2026-06-14T11:26:53+02:00" level=warning msg="[YourFolder]\alwayson\docker-compose.yml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
-[+] down 5/5
- ✔ Container aag-witness           Removed                                                                   1.5s
- ✔ Container mssqlaagnode1         Removed                                                                   1.9s
- ✔ Container mssqlaagnode2         Removed                                                                   2.1s
- ✔ Network alwayson_sqlalwayson    Removed                                                                   0.4s
- ✔ Volume alwayson_alwayson_shared Removed                                                                   0.0s
-PS [YourFolder]\alwayson> 
-```
+    If you encounter any problems and need to reset everything, I recommend...
+    PS [YourFolder]\alwayson> docker compose down -v    
+    time="2026-06-14T11:26:53+02:00" level=warning msg="[YourFolder]\alwayson\docker-compose.yml: the attribute `version` is     obsolete, it will be ignored, please remove it to avoid potential confusion"
+    [+] down 5/5
+     ✔ Container aag-witness           Removed                                                                   1.5s
+     ✔ Container mssqlaagnode1         Removed                                                                   1.9s
+     ✔ Container mssqlaagnode2         Removed                                                                   2.1s
+     ✔ Network alwayson_sqlalwayson    Removed                                                                   0.4s
+     ✔ Volume alwayson_alwayson_shared Removed                                                                   0.0s
+    PS [YourFolder]\alwayson> 
 
 ## 7/ Failover exercices
 
@@ -212,6 +211,8 @@ Look at the witness output in the logs of the container using:
 ```bash 
 PS [YourFolder]\alwayson> docker logs aag-witness -f
 ```
+[failover_exercices.output](always/failover_exercices.output)
+
 and the screenshots:
 
 ===> SHUTDOWN mssqlaagnode2 - No failover, cluster in degadred mode.
