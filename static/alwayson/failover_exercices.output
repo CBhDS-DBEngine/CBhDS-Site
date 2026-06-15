@@ -1,0 +1,73 @@
+PS S:\9 - Tech\docker-container\alwayson> docker logs -f aag-witness
+....
+....
+....
+
+---------------------------------------------------
+[2026-06-14 09:33:31] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 09:33:31] : mssqlaagnode1: PRIMARY & mssqlaagnode2: SECONDARY
+[2026-06-14 09:33:31] : Cluster HEALTHY -> NO ACTION - Re-evaluating in 10 seconds
+---------------------------------------------------
+[2026-06-14 09:33:42] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 09:33:42] : mssqlaagnode1: PRIMARY & mssqlaagnode2: SECONDARY
+[2026-06-14 09:33:42] : Cluster HEALTHY -> NO ACTION - Re-evaluating in 10 seconds
+---------------------------------------------------
+[2026-06-14 09:33:52] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 09:33:53] : mssqlaagnode1: PRIMARY & mssqlaagnode2: SECONDARY
+[2026-06-14 09:33:53] : Cluster HEALTHY -> NO ACTION - Re-evaluating in 10 seconds
+---------------------------------------------------
+
+
+===> SHUTDOWN mssqlaagnode2 - No failover, cluster in degadred mode.
+
+---------------------------------------------------
+[2026-06-14 10:07:19] : mssqlaagnode1: UP & mssqlaagnode2: DOWN
+[2026-06-14 10:07:19] : mssqlaagnode1: PRIMARY -> Cluster DEGRADED
+[2026-06-14 10:07:19] : MANUAL action REQUIRED. Re-evaluating in 10 seconds
+---------------------------------------------------
+
+===> RESTART mssqlaagnode2 - Resync
+
+---------------------------------------------------
+[2026-06-14 10:09:14] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 10:09:15] : mssqlaagnode1: PRIMARY & mssqlaagnode2: SECONDARY
+[2026-06-14 10:09:15] : Cluster HEALTHY -> NO ACTION - Re-evaluating in 10 seconds
+---------------------------------------------------
+
+
+===> SHUTDOWN mssqlaagnode1 - Failover and evition of mssqlaagnode1 from the group on mssqlaagnode2. mssqlaagnode2 is the new PRIMARY. Cluster in degraded mode.
+
+---------------------------------------------------
+[2026-06-14 10:10:37] : mssqlaagnode1: DOWN & mssqlaagnode2: UP
+[2026-06-14 10:10:37] : mssqlaagnode1 DOWN & mssqlaagnode2 UP -> FAILOVER to mssqlaagnode2
+[2026-06-14 10:10:37] : Removing mssqlaagnode1 from AG on mssqlaagnode2
+---------------------------------------------------
+[2026-06-14 10:10:55] : mssqlaagnode1: DOWN & mssqlaagnode2: UP
+[2026-06-14 10:10:55] : mssqlaagnode2 already PRIMARY -> Cluster DEGRADED
+[2026-06-14 10:10:55] : MANUAL action REQUIRED. Re-evaluating in 10 seconds
+---------------------------------------------------
+
+
+===> RESTART mssqlaagnode1 - Split brain detected, group offlined and removed from mssqlaagnode1. DB needs to be re-added in the group.
+
+---------------------------------------------------
+[2026-06-14 10:13:51] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 10:13:51] : mssqlaagnode1: PRIMARY & mssqlaagnode2: PRIMARY
+[2026-06-14 10:13:51] : Potential SPLIT BRAIN detected
+[2026-06-14 10:13:52] : mssqlaagnode1 returns while mssqlaagnode2 is PRIMARY
+[2026-06-14 10:13:52] : OFFLINE + DROP of the group on ---------------------------------------------------
+---------------------------------------------------
+[2026-06-14 10:14:02] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 10:14:03] : mssqlaagnode1: UNKNOWN & mssqlaagnode2: PRIMARY
+[2026-06-14 10:14:03] : mssqlaagnode1: AG not found
+[2026-06-14 10:14:03] : Cluster in DEGRADED state
+[2026-06-14 10:14:03] : Manual intervention REQUIRED - Re-evaluating in 10 seconds
+---------------------------------------------------
+[2026-06-14 10:14:02] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 10:14:03] : mssqlaagnode1: UNKNOWN & mssqlaagnode2: PRIMARY
+[2026-06-14 10:14:03] : mssqlaagnode1: AG not found
+[2026-06-14 10:14:03] : Cluster in DEGRADED state
+[2026-06-14 10:14:03] : Manual intervention REQUIRED - Re-evaluating in 10 seconds
+
+
+

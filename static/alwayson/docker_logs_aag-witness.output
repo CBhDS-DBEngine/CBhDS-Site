@@ -1,0 +1,21 @@
+PS [YourFolder]\alwayson>  docker logs -f aag-witness
+#### AAG WITNESS STARTED ####
+Waiting mssqlaagnode1...
+Waiting mssqlaagnode1...
+Waiting mssqlaagnode1...
+====> mssqlaagnode1 & mssqlaagnode2 reachable. This is cool, let's start the witness loop.
+---------------------------------------------------
+[2026-06-14 09:32:27] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 09:32:27] : mssqlaagnode1: UNKNOWN & mssqlaagnode2: UNKNOWN
+---------------------------------------------------
+[2026-06-14 09:32:37] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 09:32:38] : mssqlaagnode1: PRIMARY & mssqlaagnode2: UNKNOWN
+---------------------------------------------------
+[2026-06-14 09:32:48] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 09:32:48] : mssqlaagnode1: PRIMARY & mssqlaagnode2: SECONDARY
+[2026-06-14 09:32:48] : Cluster HEALTHY -> NO ACTION - Re-evaluating in 10 seconds
+---------------------------------------------------
+[2026-06-14 09:32:59] : mssqlaagnode1: UP & mssqlaagnode2: UP
+[2026-06-14 09:32:59] : mssqlaagnode1: PRIMARY & mssqlaagnode2: SECONDARY
+[2026-06-14 09:32:59] : Cluster HEALTHY -> NO ACTION - Re-evaluating in 10 seconds
+---------------------------------------------------

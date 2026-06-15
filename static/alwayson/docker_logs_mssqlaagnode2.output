@@ -1,0 +1,320 @@
+PS [YourFolder]\alwayson> docker logs mssqlaagnode2 -f
+====================================
+ Starting SQL Server container
+====================================
+[1/3] Starting SQL Server...
++ echo ====================================
++ echo ' Starting SQL Server container'
++ echo ====================================
++ echo '[1/3] Starting SQL Server...'
+Waiting for SQL Server...
++ SQLPID=6
++ /opt/mssql/bin/sqlservr
++ echo 'Waiting for SQL Server...'
++ /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourSaStrongPassword' -C -Q 'SELECT 1'
+2026-06-14 09:28:41.65 Server      Setup step is copying system data file 'C:\templatedata\master.mdf' to '/var/opt/mssql/data/master.mdf'.
+2026-06-14 09:28:41.73 Server      Did not find an existing master data file /var/opt/mssql/data/master.mdf, copying the missing default master and other system database files. If you have moved the database location, but not moved the database files, startup may fail. To repair: shutdown SQL Server, move the master database to configured location, and restart.
+2026-06-14 09:28:41.74 Server      Setup step is copying system data file 'C:\templatedata\mastlog.ldf' to '/var/opt/mssql/data/mastlog.ldf'.
+2026-06-14 09:28:41.77 Server      Setup step is copying system data file 'C:\templatedata\model.mdf' to '/var/opt/mssql/data/model.mdf'.
+2026-06-14 09:28:41.82 Server      Setup step is copying system data file 'C:\templatedata\modellog.ldf' to '/var/opt/mssql/data/modellog.ldf'.
+2026-06-14 09:28:41.88 Server      Setup step is copying system data file 'C:\templatedata\msdbdata.mdf' to '/var/opt/mssql/data/msdbdata.mdf'.
+2026-06-14 09:28:41.97 Server      Setup step is copying system data file 'C:\templatedata\msdblog.ldf' to '/var/opt/mssql/data/msdblog.ldf'.
+2026-06-14 09:28:41.99 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_replicatedmaster.mdf' to '/var/opt/mssql/data/model_replicatedmaster.mdf'.
+2026-06-14 09:28:42.01 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_replicatedmaster.ldf' to '/var/opt/mssql/data/model_replicatedmaster.ldf'.
+2026-06-14 09:28:42.02 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_msdbdata.mdf' to '/var/opt/mssql/data/model_msdbdata.mdf'.
+2026-06-14 09:28:42.08 Server      Setup step is FORCE copying system data file 'C:\templatedata\model_msdblog.ldf' to '/var/opt/mssql/data/model_msdblog.ldf'.
+2026-06-14 09:28:42.15 Server      Microsoft SQL Server 2025 (RC0) - 17.0.900.7 (X64) 
+        Aug 19 2025 23:15:32 
+        Copyright (C) 2025 Microsoft Corporation
+        Enterprise Developer Edition (64-bit) on Linux (Ubuntu 22.04.5 LTS) <X64>
+2026-06-14 09:28:42.15 Server      UTC adjustment: 0:00
+2026-06-14 09:28:42.15 Server      (c) Microsoft Corporation.
+2026-06-14 09:28:42.15 Server      All rights reserved.
+2026-06-14 09:28:42.15 Server      Server process ID is 804.
+2026-06-14 09:28:42.16 Server      Logging SQL Server messages in file '/var/opt/mssql/log/errorlog'.
+2026-06-14 09:28:42.16 Server      Registry startup parameters: 
+         -d /var/opt/mssql/data/master.mdf
+         -l /var/opt/mssql/data/mastlog.ldf
+         -e /var/opt/mssql/log/errorlog
+2026-06-14 09:28:42.16 Server      SQL Server detected 1 sockets with 6 cores per socket and 12 logical processors per socket, 12 total logical processors; using 12 logical processors based on SQL Server licensing. This is an informational message; no user action is required.
+2026-06-14 09:28:42.17 Server      SQL Server is starting at normal priority base (=7). This is an informational message only. No user action is required.
+2026-06-14 09:28:42.17 Server      Using conventional memory in the memory manager.
+2026-06-14 09:28:42.17 Server      SQL Server detected the following NUMA node configuration (NUMA Node number 0, Processor Group number 0, CPU Mask 0x0000000000000fff).
+2026-06-14 09:28:42.17 Server      Page exclusion bitmap is enabled.
+2026-06-14 09:28:42.28 Server      Detected 2048 MB of RAM, 1706 MB of available memory, 1706 MB of available page file. This is an informational message; no user action is required.
+2026-06-14 09:28:42.28 Server      Buffer pool extension is not supported on Linux platform.
+2026-06-14 09:28:42.29 Server      Buffer Pool: Allocating 4194304 bytes for 265085 hashPages.
+2026-06-14 09:28:42.85 Server      Buffer pool extension is already disabled. No action is necessary.
+[EnableRbpexForGP] : Rbpex non HS FS Toggled, isGeneralPurpose:[0] 
+[EnableRbpexForLogicalMaster] : Rbpex for LM Toggled
++ echo 'SQL Server not ready...'
++ sleep 3
+SQL Server not ready...
+[RbpexEnableGrowWithoutShrink] : Rbpex Thin Provisioning FS Toggled
+2026-06-14 09:28:44.45 Server      Skipping small memory environment configuration. State 1.
+[INFO] [InitXdbSrvGlobals]: In InitXdbSrvGlobals, FAlternateIoFactorEnabled() = [1]. IsRBPEXEnabledNonHyperscaleEdition() = [0].
+[RSC Capacity config] MaximumNumberOfCachePerDb: 0, MaximumSpaceForCachePerDbInMB: -1, MaximumNumberOfCacheGlobal: -1
+[INFO] [InitServerComponents]: IsRBPEXEnabledNonHyperscaleEdition() = [0], IsSubCoreCPUAllocation = [0], GetSchedulersNumber*100 = [1200], GetCPUCorePercentCap = [1200.000000], EnableResilientBufferPoolExtension = [0], , RbpexEnableShrink (thin provisioning)  = [0], RbpexEnableGrowWithoutShrink = [0].
+2026-06-14 09:28:44.69 Server      Installing Client TLS certificates to the store.
+2026-06-14 09:28:44.72 Server      CPU vectorization level(s) detected:  SSE SSE2 SSE3 SSSE3 SSE41 SSE42 AVX AVX2 POPCNT BMI1 BMI2 AVX512 (F CD BW DQ VL IFMA VBMI VBMI2 VNNI BITALG VPOQCNTDQ BF16)
+SqlInstanceNetworkManager: Finished setting callback functions for network IO tracking in UCS broker.
+2026-06-14 09:28:44.92 Server      Successfully initialized the TLS configuration. Allowed TLS protocol versions are ['1.0 1.1 1.2 1.3']. Allowed TLS ciphers are ['TLS_AES_256_GCM_SHA384:TLS_CHACHA20_POLY1305_SHA256:TLS_AES_128_GCM_SHA256:ECDHE-ECDSA-AES128-GCM-SHA256:ECDHE-ECDSA-AES256-GCM-SHA384:ECDHE-RSA-AES128-GCM-SHA256:ECDHE-RSA-AES256-GCM-SHA384:ECDHE-ECDSA-AES128-SHA256:ECDHE-ECDSA-AES256-SHA384:ECDHE-ECDSA-AES256-SHA:ECDHE-ECDSA-AES128-SHA:AES256-GCM-SHA384:AES128-GCM-SHA256:AES256-SHA256:AES128-SHA256:AES256-SHA:AES128-SHA:!DHE-RSA-AES256-GCM-SHA384:!DHE-RSA-AES128-GCM-SHA256:!DHE-RSA-AES256-SHA:!DHE-RSA-AES128-SHA'].
+2026-06-14 09:28:45.00 Server      Query Store settings initialized with enabled = 1, 
+2026-06-14 09:28:45.05 Server      The maximum number of dedicated administrator connections for this instance is '1'
+2026-06-14 09:28:45.10 Server      Node configuration: node 0: CPU mask: 0x0000000000000fff:0 Active CPU mask: 0x0000000000000fff:0. This message provides a description of the NUMA configuration for this computer. This is an informational message only. No user action is required.
+2026-06-14 09:28:45.17 Server      Using dynamic lock allocation.  Initial allocation of 2500 Lock blocks and 5000 Lock Owner blocks per node.  This is an informational message only.  No user action is required.
+2026-06-14 09:28:45.24 Server      In-Memory OLTP initialized on lowend machine.
+2026-06-14 09:28:45.34 Server      CLR version v4.0.30319 loaded.
+2026-06-14 09:28:45.34 Server      [INFO] Created Extended Events session 'hkenginexesession'
+2026-06-14 09:28:45.34 Server      Database Instant File Initialization: enabled. For security and performance considerations see the topic 'Database Instant File Initialization' in SQL Server Books Online. This is an informational message only. No user action is required.
+ForceFlush is enabled for this instance. 
+2026-06-14 09:28:45.37 Server      Total Log Writer threads: 2. This is an informational message; no user action is required.
+2026-06-14 09:28:45.38 Server      clwb is selected for pmem flush operation.
+2026-06-14 09:28:45.39 Server      Software Usage Metrics is disabled.
+Failed to open password policy registry path. Using default password policy values.
+2026-06-14 09:28:45.43 spid34s     [1]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:28:45.44 spid34s     Starting up database 'master'.
+ForceFlush feature is enabled for log durability.
+2026-06-14 09:28:45.82 spid34s     Converting database 'master' from version 984 to the current version 998.
+2026-06-14 09:28:45.82 spid34s     Database 'master' running the upgrade step from version 984 to version 985.
+2026-06-14 09:28:45.87 spid34s     Database 'master' running the upgrade step from version 985 to version 986.
+2026-06-14 09:28:45.89 spid34s     Database 'master' running the upgrade step from version 986 to version 987.
+2026-06-14 09:28:45.91 spid34s     Database 'master' running the upgrade step from version 987 to version 988.
+2026-06-14 09:28:45.94 spid34s     Database 'master' running the upgrade step from version 988 to version 989.
+2026-06-14 09:28:45.97 spid34s     Database 'master' running the upgrade step from version 989 to version 990.
+2026-06-14 09:28:45.98 spid34s     Database 'master' running the upgrade step from version 990 to version 991.
+2026-06-14 09:28:45.99 spid34s     [METADATA] XE max_rollover_files update status is : 0.
++ /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P 'YourSaStrongPassword' -C -Q 'SELECT 1'
+2026-06-14 09:28:46.01 spid34s     Database 'master' running the upgrade step from version 991 to version 992.
+2026-06-14 09:28:46.03 spid34s     Database 'master' running the upgrade step from version 992 to version 993.
+2026-06-14 09:28:46.05 spid34s     Database 'master' running the upgrade step from version 993 to version 994.
+2026-06-14 09:28:46.05 spid34s     [METADATA] Successfully updated max_duration metadata of XE session 65536
+2026-06-14 09:28:46.05 spid34s     [METADATA] Successfully updated max_duration metadata of XE session 65537
+2026-06-14 09:28:46.08 spid34s     Database 'master' running the upgrade step from version 994 to version 995.
+2026-06-14 09:28:46.12 spid34s     Database 'master' running the upgrade step from version 995 to version 996.
+2026-06-14 09:28:46.13 spid34s     Database 'master' running the upgrade step from version 996 to version 997.
+2026-06-14 09:28:46.16 spid34s     Database 'master' running the upgrade step from version 997 to version 998.
+[INFO] [StartUp::OpenDBsAndRecover]: In Startup, FEnableResilientBufferPoolExtensionEnabled() = [0]. IsRBPEXSupportedNonHyperscaleEdition() = [0]. IsSubCore = [0].
+[INFO][DBDDLAgent::AttachDatabase] Starting Database Attach.
+2026-06-14 09:28:46.31 spid38s     [32767]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:28:46.32 spid38s     Starting up database 'mssqlsystemresource'.
+2026-06-14 09:28:46.32 spid38s     The resource database build version is 17.00.900. This is an informational message only. No user action is required.
+2026-06-14 09:28:46.33 spid45s     Password policy update was successful.
+2026-06-14 09:28:46.38 spid34s     [32762]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:28:46.39 spid38s     [3]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:28:46.39 spid34s     Starting up database 'model_replicatedmaster'.
+2026-06-14 09:28:46.39 spid38s     Starting up database 'model'.
+2026-06-14 09:28:46.49 Server      Common language runtime (CLR) functionality initialized.
+2026-06-14 09:28:46.55 spid38s     Converting database 'model' from version 984 to the current version 998.
+2026-06-14 09:28:46.56 spid38s     Database 'model' running the upgrade step from version 984 to version 985.
+2026-06-14 09:28:46.59 spid34s     Converting database 'model_replicatedmaster' from version 984 to the current version 998.
+2026-06-14 09:28:46.60 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 984 to version 985.
+2026-06-14 09:28:46.60 spid38s     Database 'model' running the upgrade step from version 985 to version 986.
+2026-06-14 09:28:46.63 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 985 to version 986.
+2026-06-14 09:28:46.63 spid38s     Database 'model' running the upgrade step from version 986 to version 987.
+2026-06-14 09:28:46.67 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 986 to version 987.
+2026-06-14 09:28:46.68 spid38s     Database 'model' running the upgrade step from version 987 to version 988.
+2026-06-14 09:28:46.71 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 987 to version 988.
+2026-06-14 09:28:46.75 spid38s     Database 'model' running the upgrade step from version 988 to version 989.
+2026-06-14 09:28:46.77 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 988 to version 989.
+2026-06-14 09:28:46.77 spid38s     Database 'model' running the upgrade step from version 989 to version 990.
+2026-06-14 09:28:46.79 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 989 to version 990.
+2026-06-14 09:28:46.81 spid38s     Database 'model' running the upgrade step from version 990 to version 991.
+2026-06-14 09:28:46.82 spid38s     [METADATA] XE max_rollover_files update status is : 0.
+2026-06-14 09:28:46.84 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 990 to version 991.
+2026-06-14 09:28:46.85 Server      External governance manager initialized
+2026-06-14 09:28:46.85 spid34s     [METADATA] XE max_rollover_files update status is : 0.
+2026-06-14 09:28:46.86 Server      Detected pause instruction latency: 86 cycles.
+2026-06-14 09:28:46.87 spid38s     Database 'model' running the upgrade step from version 991 to version 992.
+2026-06-14 09:28:46.88 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 991 to version 992.
+2026-06-14 09:28:46.89 spid38s     Database 'model' running the upgrade step from version 992 to version 993.
+2026-06-14 09:28:46.91 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 992 to version 993.
+2026-06-14 09:28:46.92 spid38s     Database 'model' running the upgrade step from version 993 to version 994.
+2026-06-14 09:28:46.95 spid38s     Database 'model' running the upgrade step from version 994 to version 995.
+2026-06-14 09:28:46.97 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 993 to version 994.
+2026-06-14 09:28:46.99 spid38s     Database 'model' running the upgrade step from version 995 to version 996.
+2026-06-14 09:28:47.00 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 994 to version 995.
+2026-06-14 09:28:47.02 spid38s     Database 'model' running the upgrade step from version 996 to version 997.
+2026-06-14 09:28:47.03 spid38s     Database 'model' running the upgrade step from version 997 to version 998.
+2026-06-14 09:28:47.03 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 995 to version 996.
+2026-06-14 09:28:47.06 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 996 to version 997.
+2026-06-14 09:28:47.08 spid34s     Database 'model_replicatedmaster' running the upgrade step from version 997 to version 998.
+2026-06-14 09:28:47.10 spid38s     Synchronize Database 'model' (3) with Resource Database.
+2026-06-14 09:28:47.19 spid34s     Synchronize Database 'model_replicatedmaster' (32762) with Resource Database.
+[INFO][DBDDLAgent::AttachDatabase] Starting Database Attach.
+2026-06-14 09:28:47.40 spid34s     [32761]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:28:47.41 spid34s     Starting up database 'model_msdb'.
+2026-06-14 09:28:47.53 spid34s     Converting database 'model_msdb' from version 984 to the current version 998.
+2026-06-14 09:28:47.53 spid34s     Database 'model_msdb' running the upgrade step from version 984 to version 985.
+2026-06-14 09:28:47.55 spid34s     Database 'model_msdb' running the upgrade step from version 985 to version 986.
+2026-06-14 09:28:47.56 spid34s     Database 'model_msdb' running the upgrade step from version 986 to version 987.
+2026-06-14 09:28:47.58 spid34s     Database 'model_msdb' running the upgrade step from version 987 to version 988.
+2026-06-14 09:28:47.62 spid34s     Database 'model_msdb' running the upgrade step from version 988 to version 989.
+2026-06-14 09:28:47.67 spid34s     Database 'model_msdb' running the upgrade step from version 989 to version 990.
+2026-06-14 09:28:47.69 spid34s     Database 'model_msdb' running the upgrade step from version 990 to version 991.
+2026-06-14 09:28:47.69 spid34s     [METADATA] XE max_rollover_files update status is : 0.
+2026-06-14 09:28:47.71 spid34s     Database 'model_msdb' running the upgrade step from version 991 to version 992.
+2026-06-14 09:28:47.75 spid34s     Database 'model_msdb' running the upgrade step from version 992 to version 993.
+2026-06-14 09:28:47.78 spid34s     Database 'model_msdb' running the upgrade step from version 993 to version 994.
+2026-06-14 09:28:47.80 spid34s     Database 'model_msdb' running the upgrade step from version 994 to version 995.
+2026-06-14 09:28:47.84 spid34s     Database 'model_msdb' running the upgrade step from version 995 to version 996.
+2026-06-14 09:28:47.89 spid34s     Database 'model_msdb' running the upgrade step from version 996 to version 997.
+2026-06-14 09:28:47.91 spid34s     Database 'model_msdb' running the upgrade step from version 997 to version 998.
+2026-06-14 09:28:47.93 spid34s     Synchronize Database 'model_msdb' (32761) with Resource Database.
+2026-06-14 09:28:48.02 spid34s     Resource governor reconfiguration succeeded.
+2026-06-14 09:28:48.02 spid34s     SQL Server Audit is starting the audits. This is an informational message. No user action is required.
+[Auditing][SecAuditPkg::AutoStartAuditSessions] Entered function.
+2026-06-14 09:28:48.02 spid34s     [AutoStartAuditSessions] Starting audit session task
+2026-06-14 09:28:48.03 spid34s     SQL Server Audit has started the audits. This is an informational message. No user action is required.
+2026-06-14 09:28:48.10 spid34s     SQL Trace ID 1 was started by login "sa".
+2026-06-14 09:28:48.15 spid34s     Server name is 'mssqlaagnode2'. This is an informational message only. No user action is required.
+2026-06-14 09:28:48.23 spid38s     Clearing tempdb database.
+2026-06-14 09:28:48.23 spid68s     Always On Availability Groups: The availability replica manager is starting. This is an informational message only. No user action is required.
+2026-06-14 09:28:48.23 spid68s     Always On Availability Groups: The availability replica manager is waiting for the instance of SQL Server to allow client connections. This is an informational message only. No user action is required.
+2026-06-14 09:28:48.23 spid70s     [4]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:28:48.24 spid45s     A self-generated certificate was successfully loaded for encryption.
+2026-06-14 09:28:48.24 spid70s     Starting up database 'msdb'.
+2026-06-14 09:28:48.24 spid45s     Server is listening on [ 'any' <ipv6> 1433] accept sockets 1.
+2026-06-14 09:28:48.24 spid45s     Server is listening on [ 'any' <ipv4> 1433] accept sockets 1.
+2026-06-14 09:28:48.25 Server      Server is listening on [ ::1 <ipv6> 1434] accept sockets 1.
+2026-06-14 09:28:48.25 Server      Server is listening on [ 127.0.0.1 <ipv4> 1434] accept sockets 1.
+2026-06-14 09:28:48.25 Server      Dedicated admin connection support was established for listening locally on port 1434.
+TDS initialization result: 0.
+2026-06-14 09:28:48.26 spid45s     Server is listening on [ ::1 <ipv6> 1431] accept sockets 1.
+2026-06-14 09:28:48.26 spid45s     Server is listening on [ 127.0.0.1 <ipv4> 1431] accept sockets 1.
+SQLSERVR_SSL_CERTIFICATE_DNS_OR_SUBJECT_NAME environment variable was not set as SSL cert is self signed or untrusted.
+2026-06-14 09:28:48.27 spid45s     SQL Server is now ready for client connections. This is an informational message; no user action is required.
+2026-06-14 09:28:48.38 spid70s     Converting database 'msdb' from version 984 to the current version 998.
+2026-06-14 09:28:48.38 spid70s     Database 'msdb' running the upgrade step from version 984 to version 985.
+2026-06-14 09:28:48.42 spid70s     Database 'msdb' running the upgrade step from version 985 to version 986.
+2026-06-14 09:28:48.44 spid70s     Database 'msdb' running the upgrade step from version 986 to version 987.
+2026-06-14 09:28:48.46 spid70s     Database 'msdb' running the upgrade step from version 987 to version 988.
+2026-06-14 09:28:48.49 spid38s     [2]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:28:48.50 spid38s     Starting up database 'tempdb'.
+2026-06-14 09:28:48.52 spid70s     Database 'msdb' running the upgrade step from version 988 to version 989.
+2026-06-14 09:28:48.56 spid70s     Database 'msdb' running the upgrade step from version 989 to version 990.
+2026-06-14 09:28:48.59 spid70s     Database 'msdb' running the upgrade step from version 990 to version 991.
+2026-06-14 09:28:48.59 spid38s     The tempdb database has 1 data file(s).
+2026-06-14 09:28:48.59 spid70s     [METADATA] XE max_rollover_files update status is : 0.
+2026-06-14 09:28:48.61 spid74s     The Service Broker endpoint is in disabled or stopped state.
+2026-06-14 09:28:48.61 spid74s     The Database Mirroring endpoint is in disabled or stopped state.
+2026-06-14 09:28:48.61 spid70s     Database 'msdb' running the upgrade step from version 991 to version 992.
+2026-06-14 09:28:48.63 spid70s     Database 'msdb' running the upgrade step from version 992 to version 993.
+2026-06-14 09:28:48.63 spid74s     Service Broker manager has started.
+2026-06-14 09:28:48.65 spid70s     Database 'msdb' running the upgrade step from version 993 to version 994.
+2026-06-14 09:28:48.66 spid70s     Database 'msdb' running the upgrade step from version 994 to version 995.
+2026-06-14 09:28:48.70 spid70s     Database 'msdb' running the upgrade step from version 995 to version 996.
+2026-06-14 09:28:48.74 spid70s     Database 'msdb' running the upgrade step from version 996 to version 997.
+2026-06-14 09:28:48.75 spid70s     Database 'msdb' running the upgrade step from version 997 to version 998.
+2026-06-14 09:28:48.77 spid70s     Synchronize Database 'msdb' (4) with Resource Database.
+SQL Server ready.
+[2/3] Running DB initialization...
++ echo 'SQL Server ready.'
++ echo '[2/3] Running DB initialization...'
++ sh ./db-init.sh
+#######    Running set up script    #######
+2026-06-14 09:28:48.86 spid34s     Recovery is complete. This is an informational message only. No user action is required.
+Changed database context to 'master'.
+2026-06-14 09:28:49.17 spid46s     The default language (LCID 0) has been set for engine and full-text services.
+2026-06-14 09:28:49.25 spid90      [DBMgr::FindFreeDatabaseID] Next available DbId EX locked: 5
+2026-06-14 09:28:49.34 spid68      Configuration option 'show advanced options' changed from 0 to 1. Run the RECONFIGURE statement to install.
+2026-06-14 09:28:49.42 spid68      Configuration option 'Agent XPs' changed from 0 to 1. Run the RECONFIGURE statement to install.
+2026-06-14 09:28:49.48 spid68      Configuration option 'show advanced options' changed from 1 to 0. Run the RECONFIGURE statement to install.
+2026-06-14 09:28:51.09 spid68      Attempting to load library 'xpsqlbot.dll' into memory. This is an informational message only. No user action is required.
+2026-06-14 09:28:51.13 spid68      Using 'xpsqlbot.dll' version '2025.170.900' to execute extended stored procedure 'xp_qv'. This is an informational message only; no user action is required.
+2026-06-14 09:28:51.34 spid46s     The tempdb database has 8 data file(s).
+2026-06-14 09:28:51.56 spid68      Attempting to load library 'xpstar.dll' into memory. This is an informational message only. No user action is required.
+2026-06-14 09:28:51.64 spid68      Using 'xpstar.dll' version '2025.170.900' to execute extended stored procedure 'xp_sqlagent_notify'. This is an informational message only; no user action is required.
+2026-06-14 09:32:31.42 spid90      [5]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:32:31.43 spid90      Starting up database 'tpcc'.
+2026-06-14 09:32:31.47 spid90      The database 'tpcc' is marked RESTORING and is in a state that does not allow recovery to be run.
+2026-06-14 09:32:32.10 Backup      Database was restored: Database: tpcc, creation date(time): 2026/05/18(07:43:42), first LSN: 1172:76576:1, last LSN: 1172:76600:1, number of dump devices: 1, device information: (FILE=1, TYPE=DISK: {'/var/opt/mssql/seed-backup/tpcc_seed.bak'}). Informational message. No user action required.
+2026-06-14 09:32:32.15 Backup      RESTORE DATABASE successfully processed 276338 pages in 221.717 seconds (9.737 MB/sec).
+Restoring database in NORECOVERY mode...
+10 percent processed.
+20 percent processed.
+30 percent processed.
+40 percent processed.
+50 percent processed.
+60 percent processed.
+70 percent processed.
+80 percent processed.
+90 percent processed.
+100 percent processed.
+Processed 276336 pages for database 'tpcc', file 'tpcc' on file 1.
+Processed 2 pages for database 'tpcc', file 'tpcc_log' on file 1.
+RESTORE DATABASE successfully processed 276338 pages in 221.717 seconds (9.737 MB/sec).
+Creating login...
+Creating master key...
+Create certificate from DER format
+Waiting for certificate files...
+Importing certificate...
+2026-06-14 09:32:44.53 spid90      Server is listening on [ 'any' <ipv6> 5022] accept sockets 1.
+2026-06-14 09:32:44.53 spid90      Server is listening on [ 'any' <ipv4> 5022] accept sockets 1.
+2026-06-14 09:32:44.53 spid90      The Database Mirroring endpoint is now listening for connections.
+2026-06-14 09:32:44.53 spid90      Database mirroring has been enabled on this instance of SQL Server.
+Creating HADR endpoint...
+[HADR TRANSPORT] LOCAL AR:[00000000-0000-0000-0000-000000000000]<-[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrTransport::QueueMessage with session ID 00000000-0000-0000-0000-000000000000 process configure message(36) with version(2)
+2026-06-14 09:32:48.37 spid90      The state of the local availability replica in availability group 'tpcc_ag' has changed from 'NOT_AVAILABLE' to 'RESOLVING_NORMAL'.  The state changed because the local availability replica is joining the availability group.  For more information, see the SQL Server error log or cluster log.  If this is a Windows Server Failover Clustering (WSFC) availability group, you can also see the WSFC management console.
+2026-06-14 09:32:48.38 spid8s      The state of the local availability replica in availability group 'tpcc_ag' has changed from 'RESOLVING_NORMAL' to 'SECONDARY_NORMAL'.  The state changed because the availability group state has changed in Windows Server Failover Clustering (WSFC).  For more information, see the SQL Server error log or cluster log.  If this is a Windows Server Failover Clustering (WSFC) availability group, you can also see the WSFC management console.
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrTransport::Connect m_fPrimary[0], fInitiator[0]
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrTransport::AddReplica m_fPrimary[0], m_fPrimaryConnector[1]
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] Session:[00000000-0000-0000-0000-000000000000] CHadrTransportReplica State change from HadrSession_Uninitialized to HadrSession_Configuring - function [CHadrTransportReplica::Init]
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] Queue Timeout from [CHadrTransportReplica::Init]
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]-> Remote AR:[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrTransportReplica::Connect m_fPrimary[0], fInitiator[0]
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrSession::StartConnection m_fSecondary[1], m_fPrimaryConnector[0], eInitialJoinMsgType[1]
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrConfigState::ChangeState with session ID 88437C05-BB0B-49E6-8C2A-5AEB7493323D change from HadrSessionConfig_Unconfigured to HadrSessionConfig_ConfigRequest - function [CHadrSession::StartConnection]
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] Transport is not in a connected state, unable to send packet
+ERROR FAILED to send HadrSeedingRequestMsg [E4E4F678-0BEC-4F5B-9F11-663951A6F77F] replica (2214592512).
+Joining Availability Group...
+SECONDARY SETUP COMPLETED
+#######      Set up script alwayson_secondary.sql execution completed     #######
++ echo '[3/3] Waiting for SQL Server process (6)...'
++ wait 6
+[3/3] Waiting for SQL Server process (6)...
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrConfigState::ChangeState with session ID 88437C05-BB0B-49E6-8C2A-5AEB7493323D change from HadrSessionConfig_ConfigRequest to HadrSessionConfig_WaitingSynAck - function [CHadrSession::GenerateConfigMessage]
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrSession::GenerateConfigMessage with session ID 88437C05-BB0B-49E6-8C2A-5AEB7493323D Generate configure message(1) with viersion(1)
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]<-[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrSession::ProcessMessage with session ID 88437C05-BB0B-49E6-8C2A-5AEB7493323D process configure message(2) with version(1)
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrConfigState::ChangeState with session ID 88437C05-BB0B-49E6-8C2A-5AEB7493323D change from HadrSessionConfig_WaitingSynAck to HadrSessionConfig_SendAck - function [CHadrSession::ProcessMessage]
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrConfigState::ChangeState with session ID 88437C05-BB0B-49E6-8C2A-5AEB7493323D change from HadrSessionConfig_SendAck to HadrSessionConfig_Configured - function [CHadrSession::GenerateConfigMessage]
+[HADR TRANSPORT] LOCAL AR:[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] in CHadrSession::GenerateConfigMessage with session ID 88437C05-BB0B-49E6-8C2A-5AEB7493323D Generate configure message(3) with viersion(1)
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] Session:[88437C05-BB0B-49E6-8C2A-5AEB7493323D] CHadrTransportReplica State change from HadrSession_Configuring to HadrSession_Connected - function [CHadrTransportReplica::GetNextMessage]
+2026-06-14 09:32:48.60 spid13s     A connection for availability group 'tpcc_ag' from availability replica 'mssqlaagnode2' with id  [5D0AA275-FB9E-4A82-9EE3-B62317778799] to 'mssqlaagnode1' with id [E4E4F678-0BEC-4F5B-9F11-663951A6F77F] has been successfully established.  This is an informational message only. No user action is required.
+AGID [B61B4CA0-E98B-353D-FB65-45211767BCBC] : [5D0AA275-FB9E-4A82-9EE3-B62317778799] local replica received build replica request from [E4E4F678-0BEC-4F5B-9F11-663951A6F77F]. Source operation id is [07E1D690-93DA-4E7C-8D9A-30EFAECBFC4E].
+2026-06-14 09:32:48.61 spid14s     Always On: DebugTraceVarArgs AR '[HADR] [Secondary] operation on replicas [E4E4F678-0BEC-4F5B-9F11-663951A6F77F]->[5D0AA275-FB9E-4A82-9EE3-B62317778799], database [tpcc], remote endpoint [tcp://mssqlaagnode1:5022], source operation [07E1D690-93DA-4E7C-8D9A-30EFAECBFC4E]: Transitioning from [PENDING] to [CHECK_IF_SEEDING_NEEDED].'
+DbMgrPartner::IsSyncProgressRequired DB[5] as a secondary role of the AG [B61B4CA0-E98B-353D-FB65-45211767BCBC] needs to enable sync progress.
+2026-06-14 09:32:48.86 spid16s     Always On Availability Groups connection with primary database established for secondary database 'tpcc' on the availability replica 'mssqlaagnode1' with Replica ID: {e4e4f678-0bec-4f5b-9f11-663951a6f77f}. This is an informational message only. No user action is required.
+Unable to use HadrExtendedRecoveryForksRequestMsgTimeout config parameter. Using the default value: 20 seconds instead.
+2026-06-14 09:32:48.89 spid13s     State information for database 'tpcc' - Hardened Lsn: '(1172:76600:1)'    Commit LSN: '(0:0:0)'    Commit Time: 'Jan  1 1900 12:00AM'
+Cleaning up conversations for [5D0AA275-FB9E-4A82-9EE3-B62317778799].
+RecoveryUnit::Shutdown. IsOnline: 0
+ProcessPrimaryReplicaInfoMsg Response - partition id = B61B4CA0-E98B-353D-FB65-45211767BCBC, source [5D0AA275-FB9E-4A82-9EE3-B62317778799], destination: [E4E4F678-0BEC-4F5B-9F11-663951A6F77F], response code [0x80071c27] for database [tpcc]
+[HADR TRANSPORT] AG:[5D0AA275-FB9E-4A82-9EE3-B62317778799] CHadrTransport::NotifyManagerChange called
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] No changes detected from manager notification.
+PrimaryReplicaInfoMsg sent to partition [B61B4CA0-E98B-353D-FB65-45211767BCBC] replica [E4E4F678-0BEC-4F5B-9F11-663951A6F77F].
+2026-06-14 09:32:48.91 spid16s     Always On: DebugTraceVarArgs AR '[HADR] [Secondary] operation on replicas [E4E4F678-0BEC-4F5B-9F11-663951A6F77F]->[5D0AA275-FB9E-4A82-9EE3-B62317778799], database [tpcc], remote endpoint [tcp://mssqlaagnode1:5022], source operation [07E1D690-93DA-4E7C-8D9A-30EFAECBFC4E]: Transitioning from [CHECK_IF_SEEDING_NEEDED] to [CATCHUP].'
+[HADR TRANSPORT] AG:[5D0AA275-FB9E-4A82-9EE3-B62317778799] CHadrTransport::NotifyManagerChange called
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] No changes detected from manager notification.
+2026-06-14 09:32:48.91 spid16s     Always On: DebugTraceVarArgs AR 'Processing BuildReplicaCatchup event with HADR Role: [SECONDARY]'
+2026-06-14 09:32:48.91 spid16s     Always On: DebugTraceVarArgs AR '[HADR] [Secondary] operation on replicas [E4E4F678-0BEC-4F5B-9F11-663951A6F77F]->[5D0AA275-FB9E-4A82-9EE3-B62317778799], database [tpcc], remote endpoint [tcp://mssqlaagnode1:5022], source operation [07E1D690-93DA-4E7C-8D9A-30EFAECBFC4E]: Transitioning from [CATCHUP] to [COMPLETED].'
+[HADR TRANSPORT] AG:[5D0AA275-FB9E-4A82-9EE3-B62317778799] CHadrTransport::NotifyManagerChange called
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] No changes detected from manager notification.
+2026-06-14 09:32:48.93 spid13s     State information for database 'tpcc' - Hardened Lsn: '(1172:76600:1)'    Commit LSN: '(0:0:0)'    Commit Time: 'Jan  1 1900 12:00AM'
+[DeleteDbName] Database tpcc with id 5 is deleted.
+HadrRuntimeCallbacks::WaitForAgMasterReady (B61B4CA0-E98B-353D-FB65-45211767BCBC), return 1
+2026-06-14 09:32:49.02 spid13s     [5]. Feature Status: PVS: 0. CTR: 0. ConcurrentPFSUpdate: 1. ConcurrentGAMUpdate: 1. ConcurrentSGAMUpdate: 1, CleanupUnderUserTransaction: 0. TranLevelPVS: 0. NestIdBasedHP: 0. m_nestIdBasedHPOnTempDB: 0
+2026-06-14 09:32:49.02 spid13s     Starting up database 'tpcc'.
+2026-06-14 09:32:49.26 spid13s     Parallel redo is started for database 'tpcc' with worker pool size [6].
+2026-06-14 09:32:49.29 spid13s     Always On Availability Groups connection with primary database established for secondary database 'tpcc' on the availability replica 'mssqlaagnode1' with Replica ID: {e4e4f678-0bec-4f5b-9f11-663951a6f77f}. This is an informational message only. No user action is required.
+Unable to use HadrExtendedRecoveryForksRequestMsgTimeout config parameter. Using the default value: 20 seconds instead.
+2026-06-14 09:32:49.29 spid13s     The recovery LSN (1172:76600:1) was identified for the database with ID 5. This is an informational message only. No user action is required.
+2026-06-14 09:32:49.32 spid19s     Always On Availability Groups connection with primary database established for secondary database 'tpcc' on the availability replica 'mssqlaagnode1' with Replica ID: {e4e4f678-0bec-4f5b-9f11-663951a6f77f}. This is an informational message only. No user action is required.
+Unable to use HadrExtendedRecoveryForksRequestMsgTimeout config parameter. Using the default value: 20 seconds instead.
+2026-06-14 09:32:49.32 spid19s     The recovery LSN (1172:76600:1) was identified for the database with ID 5. This is an informational message only. No user action is required.
+DbMgrPartner::IsSyncProgressRequired DB[5] as a secondary role of the AG [B61B4CA0-E98B-353D-FB65-45211767BCBC] needs to enable sync progress.
+[HADR TRANSPORT] AG:[5D0AA275-FB9E-4A82-9EE3-B62317778799] CHadrTransport::NotifyManagerChange called
+[HADR TRANSPORT] AR[5D0AA275-FB9E-4A82-9EE3-B62317778799]->[E4E4F678-0BEC-4F5B-9F11-663951A6F77F] No changes detected from manager notification.
+2026-06-14 09:32:49.44 spid13s     CHECKDB for database 'tpcc' finished without errors on 2026-05-19 09:20:21.447 (local time). This is an informational message only; no user action is required.
+2026-06-14 09:34:22.86 spid102     Attempting to load library 'xplog70.dll' into memory. This is an informational message only. No user action is required.
+2026-06-14 09:34:22.89 spid102     Using 'xplog70.dll' version '2025.170.900' to execute extended stored procedure 'xp_msver'. This is an informational message only; no user action is required.
+2026-06-14 09:36:38.03 spid102     Using 'dbghelp.dll' version '4.0.5'
