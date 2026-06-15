@@ -219,21 +219,21 @@ Look at the witness output in the logs of the container using:
 ```bash 
 PS [YourFolder]\alwayson> docker logs aag-witness -f
 ```
-[failover_exercices.output](always/failover_exercices.output)
+[failover_exercices.output](CBhDS-Site/always/failover_exercices.output)
 
 and the screenshots:
 
 ===> SHUTDOWN mssqlaagnode2 - No failover, cluster in degadred mode.
-![Secondary Node Down](static/alwayson/secondary_down.png)
+![Secondary Node Down](CBhDS-Site/alwayson/secondary_down.png)
 
 ===> RESTART mssqlaagnode2 - Resync
-![Secondary Node Restart and Resync](static/alwayson/secondary_restart.png)
+![Secondary Node Restart and Resync](CBhDS-Site/alwayson/secondary_restart.png)
 
 ===> SHUTDOWN mssqlaagnode1 - Failover and evition of mssqlaagnode1 from the group on mssqlaagnode2. mssqlaagnode2 is the new PRIMARY. Cluster in degraded mode.
-![Secondary Node is the New Primary](static/alwayson/secondary_is_the_new_primary.png)
+![Secondary Node is the New Primary](CBhDS-Site/alwayson/secondary_is_the_new_primary.png)
 
 ===> RESTART mssqlaagnode1 - Split brain detected, group offlined and removed from mssqlaagnode1. DB needs to be re-added in the group.
-![Primary Restart and Cluster Cleanup](static/alwayson/primary_restart_remove.png)
+![Primary Restart and Cluster Cleanup](CBhDS-Site/alwayson/primary_restart_remove.png)
 
-Remember, after  mssqlaagnode1 restart, the group replicas is composed of  mssqlaagnode2 only.
-You have the option to manually ressed the database or re-initiate the conf using docker as previously.
+    Remember, after  mssqlaagnode1 restart, the group replicas is composed of  mssqlaagnode2 only.
+    You have the option to manually ressed the database or re-initiate the conf using docker as previously.
