@@ -193,11 +193,11 @@ The outputs are in the files:
 
 At the end we have an healthy cluster:
 
-![Cluster Healthy Status](static/alwayson/healthy.png)
+[Cluster Healthy Status](/CBhDS-Site/alwayson/healthy.png)
 
-![Secondary Node Status](static/alwayson/healthy_secondary.png)
+[Secondary Node Status](/CBhDS-Site/alwayson/healthy_secondary.png)
 
-![Primary Node Status](static/alwayson/healthy_primary.png)
+[Primary Node Status](/CBhDS-Site/alwayson/healthy_primary.png)
 
 
     Note if you encounter any problems and need to reset everything. I recommend...
