@@ -187,17 +187,17 @@ PS [YourFolder]\alwayson> docker logs aag-witness -f
 
 The outputs are in the files:
 
-- [docker_logs_mssqlaagnode1.output](always/docker_logs_mssqlaagnode1.output)
-- [docker_logs_mssqlaagnode2.output](always/docker_logs_mssqlaagnode1.output)
-- [docker_logs_aag-witness.output](always/docker_logs_aag-witness.output)
+- [docker_logs_mssqlaagnode1.output](CBhDS-Site/always/docker_logs_mssqlaagnode1.output)
+- [docker_logs_mssqlaagnode2.output](CBhDS-Site/always/docker_logs_mssqlaagnode1.output)
+- [docker_logs_aag-witness.output](CBhDS-Site/always/docker_logs_aag-witness.output)
 
 At the end we have an healthy cluster:
 
-[Cluster Healthy Status](/CBhDS-Site/alwayson/healthy.png)
+![Cluster Healthy Status](/CBhDS-Site/alwayson/healthy.png)
 
-[Secondary Node Status](/CBhDS-Site/alwayson/healthy_secondary.png)
+![Secondary Node Status](/CBhDS-Site/alwayson/healthy_secondary.png)
 
-[Primary Node Status](/CBhDS-Site/alwayson/healthy_primary.png)
+![Primary Node Status](/CBhDS-Site/alwayson/healthy_primary.png)
 
 
     Note if you encounter any problems and need to reset everything. I recommend...
