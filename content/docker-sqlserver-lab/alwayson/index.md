@@ -90,7 +90,7 @@ The root directory alwayson includes the following files and folders:
 ```
 ### Files review
 
-*docker-compose.yml*
+*docker-compose.yml* [docker-compose.yml](CBhDS-Site/alwayson/docker-compose.yml)
 
 - Both database nodes (`mssqlaagnode1` and `mssqlaagnode2`), allowing embedded configuration files and automation scripts.
 - The cluster uses specialized entry scripts via the `INIT_SCRIPT` environment variable—running `alwayson_primary.sql` on Node 1 and `alwayson_secondary.sql` on Node 2 to automate the Availability Group setup.
@@ -102,7 +102,7 @@ The root directory alwayson includes the following files and folders:
 - Both SQL Server containers feature a `sqlcmd` healthcheck that validates SQL engine availability before allowing dependent services to act.
 - One lightweight Simulated Witness (`aag-witness`). Instead of a full Windows Server or SQL Server instance, a lightweight `mssql-tools` container runs a custom `witness.sh` bash script. It explicitly waits for both database nodes to start (`depends_on`) and runs continuously (`restart: always`) to monitor health and handle manual failover logic.
 
-*dockerfile*
+*dockerfile* [dockerfile](CBhDS-Site/alwayson/dockerfile)
 - Uses the latest official Microsoft SQL Server 2025 image running on an Ubuntu 22.04 base.
 - Temporarily switches to `USER root` to install the latest native client tools (`mssql-tools18` and `unixodbc-dev`) required for running the healthcheck and executing internal T-SQL initialization scripts.
 - Copies the local automation files into the container and explicitly grants execution permissions.
@@ -111,14 +111,14 @@ The root directory alwayson includes the following files and folders:
 - Switches back to the non-privileged `USER mssql` at the end of the build to ensure the container never runs as root.
 - Points to a custom `/entrypoint.sh` to orchestrate the sequential startup of the SQL engine alongside the cluster setup scripts.
 
-*db-init.sh*
+*db-init.sh* [db-init.sh](CBhDS-Site/alwayson/db-init.sh)
 
 - The script immediately exits if any subsequent command fails, preventing partial or corrupt cluster initializations.
 - It maps the environment variable `INIT_SCRIPT` to dynamically execute different SQL scripts (`alwayson_primary.sql` vs. `alwayson_secondary.sql`) depending on the node's designated role.
 - The script proactively deletes any pre-existing certificates on PRIMARY (`alwayson_certificate.key`/`.cert`) from the shared volume. This prevents deployment failures if the Docker containers are restarted without deleting the persistent volumes.
 - Executes the setup.
         
-*alwayson_primary.sql*
+*alwayson_primary.sql* [alwayson_primary.sql](CBhDS-Site/alwayson/alwayson_primary.sql)
 
 - Restores the template database (`tpcc`) directly into `RECOVERY` mode using a full backup (`.bak`) file mapped from the host Windows machine.
 - Creates a dedicated SQL login and a Master Key to secure the Always On environment.
@@ -128,7 +128,7 @@ The root directory alwayson includes the following files and folders:
 - Both `mssqlaagnode1` and `mssqlaagnode2` replicas are configured with `SYNCHRONOUS_COMMIT` for zero data loss and `SEEDING_MODE = AUTOMATIC`, meaning SQL Server will automatically stream and create the database on the secondary node over the network.
 - Includes an error-handling loop that attempts to add the database to the Availability Group for up to 2.5 minutes (30 retries with a 5-second delay). This ensures the AG setup doesn't fail if the underlying network or endpoint routing takes a few seconds to warm up inside Docker.
 
-*alwayson_secondary.sql*
+*alwayson_secondary.sql* [alwayson_secondary.sql](CBhDS-Site/alwayson/alwayson_secondary.sql)
 
 - Unlike the primary node, the secondary node restores the `tpcc` database backup utilizing the `NORECOVERY` state. This leaves the database unrecovered and open to safely receiving transaction log streams from the primary instance.
 - Re-creates the identical login and database Master Key setup. This ensures that the credentials and encryption capabilities perfectly mirror the primary node.
@@ -138,7 +138,7 @@ The root directory alwayson includes the following files and folders:
 - Executes the `JOIN WITH (CLUSTER_TYPE = NONE)` command to bind itself to the clusterless availability group. 
 - Grants the availability group permission to `CREATE ANY DATABASE`. This tells SQL Server that it has explicit permission to automatically instantiate, allocate, and synchronize the target replica database behind the scenes without manual DBA intervention.
 
-*witness.sh*
+*witness.sh* [witness.sh](CBhDS-Site/alwayson/witness.sh)
 
 - Enforces script safety by immediately exiting on any command failures, uninitialized variables, or pipelined errors.
 - Utilizes an `until` loop to verify that both SQL Server containers are completely initialized and accepting query requests before entering the main loop.
@@ -159,7 +159,7 @@ The root directory alwayson includes the following files and folders:
 PS [YourFolder]\alwayson> docker compose build --no-cache
 ```
 
-See the output in : [docker_build.output](alwayson/docker_build.output)
+See the output in : [docker_build.output](CBhDS-Site/alwayson/docker_build.output)
 
 
     Note on "SQL Server needs to be restarted" messages:
