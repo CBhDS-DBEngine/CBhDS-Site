@@ -200,7 +200,7 @@ At the end we have an healthy cluster:
 ![Primary Node Status](static/alwayson/healthy_primary.png)
 
 
-    If you encounter any problems and need to reset everything, I recommend...
+    Note if you encounter any problems and need to reset everything. I recommend...
     PS [YourFolder]\alwayson> docker compose down -v    
     time="2026-06-14T11:26:53+02:00" level=warning msg="[YourFolder]\alwayson\docker-compose.yml: the attribute `version` is     obsolete, it will be ignored, please remove it to avoid potential confusion"
     [+] down 5/5
