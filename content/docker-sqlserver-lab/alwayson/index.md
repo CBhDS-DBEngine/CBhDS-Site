@@ -2,7 +2,16 @@
 title: "SQL Server Always On Cluster with a Simulated Witness in Docker"
 summary: "Setting Up a SQL Server Always On Cluster with a Simulated Witness in Docker"
 categories: ["Docker"]
-tags: ["Automation", "SQL Server", "Always On", "Witness"]
+tags: [
+  "SQL Server 2025", 
+  "Always On Availability Groups", 
+  "Clusterless AG", 
+  "Database Automation", 
+  "High Availability", 
+  "Failover Testing", 
+  "DevOps", 
+  "MSSQL Linux"
+]
 ---
 
 This article covers the following steps:
