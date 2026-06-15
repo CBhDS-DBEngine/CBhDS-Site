@@ -1,0 +1,78 @@
+version: "3.9"
+services:
+    mssqlaagnode1:
+        build: .
+        environment:
+            MSSQL_SA_PASSWORD: "YourStrongSAPassord!"
+            ACCEPT_EULA: "Y"
+            MSSQL_AGENT_ENABLED: "true"
+            INIT_SCRIPT: "alwayson_primary.sql"
+            # Set via docker-compose since SQL Server reads memory configuration 
+            # at startup and it must be consistent across all AAG nodes.
+            MSSQL_MEMORY_LIMIT_MB: 2048
+        ports:
+            - "2500:1433"
+        container_name: mssqlaagnode1
+        hostname: mssqlaagnode1
+        volumes:
+            # Backups SEED visibles Windows (INIT RESTORE)
+            - [YourFolder]\alwayson/seed-backups:/var/opt/mssql/seed-backup
+            # Shared volume for AlwaysOn (Certificate files, etc)
+            - alwayson_shared:/var/opt/mssql/shared
+        networks:
+            - sqlalwayson
+        healthcheck:
+            test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -C -U sa -P \"$${MSSQL_SA_PASSWORD}\" -Q 'SELECT 1' || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 10
+            start_period: 60s
+    mssqlaagnode2:
+        build: .
+        environment:
+            MSSQL_SA_PASSWORD: "YourStrongSAPassord!"
+            ACCEPT_EULA: "Y"
+            MSSQL_AGENT_ENABLED: "true"
+            INIT_SCRIPT: "alwayson_secondary.sql"
+            # Set via docker-compose since SQL Server reads memory configuration 
+            # at startup and it must be consistent across all AAG nodes.
+            MSSQL_MEMORY_LIMIT_MB: 2048
+        ports:
+            - "2600:1433"
+        container_name: mssqlaagnode2
+        hostname: mssqlaagnode2
+        volumes:
+            # Backups SEED visibles Windows (INIT RESTORE)
+            - [YourFolder]\alwayson/seed-backups:/var/opt/mssql/seed-backup
+            # Shared volume for AlwaysOn (Certificate files, etc)
+            - alwayson_shared:/var/opt/mssql/shared
+        networks:
+            - sqlalwayson
+        healthcheck:
+            test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -C -U sa -P \"$${MSSQL_SA_PASSWORD}\" -Q 'SELECT 1' || exit 1"]
+            interval: 10s
+            timeout: 5s
+            retries: 10
+            start_period: 60s
+
+    aag-witness:
+        image: mcr.microsoft.com/mssql-tools
+        container_name: aag-witness
+        environment:
+            MSSQL_SA_PASSWORD: "YourStrongSAPassord!"
+            ACCEPT_EULA: "Y"
+        volumes:
+          - [YourFolder]\alwayson/witness.sh:/witness.sh:ro
+        command: ["bash", "/witness.sh"]
+        networks:
+            - sqlalwayson
+        depends_on:
+            - mssqlaagnode1
+            - mssqlaagnode2
+        restart: always
+
+networks:
+    sqlalwayson:
+
+volumes:
+  alwayson_shared:

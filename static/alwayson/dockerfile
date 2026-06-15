@@ -1,0 +1,32 @@
+FROM mcr.microsoft.com/mssql/server:2025-latest
+
+USER root
+
+# sqlcmd (tools18) installation
+RUN apt-get update && apt-get install -y curl gnupg \
+ && curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - \
+ && curl https://packages.microsoft.com/config/ubuntu/22.04/prod.list > /etc/apt/sources.list.d/mssql-release.list \
+ && apt-get update \
+ && ACCEPT_EULA=Y apt-get install -y mssql-tools18 unixodbc-dev
+
+# Scripts copy into root container directory image
+COPY . /
+
+# Permissions for scripts to be executed by mssql user
+RUN chmod +x /db-init.sh
+RUN chmod +x /entrypoint.sh
+
+# Configuration
+# Agent + HADR enabled
+RUN /opt/mssql/bin/mssql-conf set sqlagent.enabled true
+RUN /opt/mssql/bin/mssql-conf set hadr.hadrenabled  1
+
+# Create directories for backup files
+RUN mkdir -p /var/opt/mssql/shared /var/opt/mssql/backup \
+    && chown -R mssql:mssql /var/opt/mssql/shared /var/opt/mssql/backup
+RUN /opt/mssql/bin/mssql-conf set filelocation.defaultbackupdir /var/opt/mssql/backup
+
+# Remaining ops as mssql user !!!!!
+USER mssql
+
+ENTRYPOINT ["/entrypoint.sh"]
