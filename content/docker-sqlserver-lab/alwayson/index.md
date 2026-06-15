@@ -205,7 +205,7 @@ PS [YourFolder]\alwayson> docker logs aag-witness -f
 The outputs are in the files:
 
 - [docker_logs_mssqlaagnode1.output](/CBhDS-Site/alwayson/docker_logs_mssqlaagnode1.output)
-- [docker_logs_mssqlaagnode2.output](/CBhDS-Site/alwayson/docker_logs_mssqlaagnode1.output)
+- [docker_logs_mssqlaagnode2.output](/CBhDS-Site/alwayson/docker_logs_mssqlaagnode2.output)
 - [docker_logs_aag-witness.output](/CBhDS-Site/alwayson/docker_logs_aag-witness.output)
 
 At the end we have an healthy cluster:
