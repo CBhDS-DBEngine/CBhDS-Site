@@ -33,6 +33,8 @@ Microsoft references
 - Create and configure an availability group for SQL Server on Linux, https://learn.microsoft.com/en-us/sql/linux/business-continuity/availability-groups/create?view=sql-server-ver17&tabs=ru
 - Perform a planned manual failover of an Always On availability group (SQL Server), https://learn.microsoft.com/en-us/sql/database-engine/availability-groups/windows/perform-a-planned-manual-failover-of-an-availability-group-sql-server?view=sql-server-ver17
 
+Additions
+
 On my end, I added a lot of hardening while changing the project's architecture. I'm relying on the existence of objects or services to continue operations, and the SQL Server services are run under mssql...
 On the other hand, I added the ability to restore one's own database, as well as that famous "mock" witness.
 
@@ -219,21 +221,21 @@ Look at the witness output in the logs of the container using:
 ```bash 
 PS [YourFolder]\alwayson> docker logs aag-witness -f
 ```
-[failover_exercices.output](CBhDS-Site/always/failover_exercices.output)
+It looks like: [failover_exercices.output](/CBhDS-Site/always/failover_exercices.output)
 
 and the screenshots:
 
-===> SHUTDOWN mssqlaagnode2 - No failover, cluster in degadred mode.
-![Secondary Node Down](CBhDS-Site/alwayson/secondary_down.png)
+** SCENARIO A: SHUTDOWN mssqlaagnode2 - No failover, cluster in degadred mode**
+![Secondary Node Down](/CBhDS-Site/alwayson/secondary_down.png)
 
-===> RESTART mssqlaagnode2 - Resync
-![Secondary Node Restart and Resync](CBhDS-Site/alwayson/secondary_restart.png)
+** SCENARIO B: RESTART mssqlaagnode2 - Resync**
+![Secondary Node Restart and Resync](/CBhDS-Site/alwayson/secondary_restart.png)
 
-===> SHUTDOWN mssqlaagnode1 - Failover and evition of mssqlaagnode1 from the group on mssqlaagnode2. mssqlaagnode2 is the new PRIMARY. Cluster in degraded mode.
-![Secondary Node is the New Primary](CBhDS-Site/alwayson/secondary_is_the_new_primary.png)
+** SCENARIO C: SHUTDOWN mssqlaagnode1 - Failover and evition of mssqlaagnode1 from the group on mssqlaagnode2. mssqlaagnode2 is the new PRIMARY. Cluster in degraded mode**
+![Secondary Node is the New Primary](/CBhDS-Site/alwayson/secondary_is_the_new_primary.png)
 
-===> RESTART mssqlaagnode1 - Split brain detected, group offlined and removed from mssqlaagnode1. DB needs to be re-added in the group.
-![Primary Restart and Cluster Cleanup](CBhDS-Site/alwayson/primary_restart_remove.png)
+** SCENARIO D: RESTART mssqlaagnode1 - Split brain detected, group offlined and removed from mssqlaagnode1. DB needs to be re-added in the group**
+![Primary Restart and Cluster Cleanup](/CBhDS-Site/alwayson/primary_restart_remove.png)
 
     Remember, after  mssqlaagnode1 restart, the group replicas is composed of  mssqlaagnode2 only.
     You have the option to manually ressed the database or re-initiate the conf using docker as previously.
