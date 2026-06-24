@@ -1,7 +1,11 @@
 @startuml
 'title SQL Server FCI
 
-' --- Importation des icônes standardisées ---
+' ==========================================================
+' CBhDS 2026 - https://cbhds-dbengine.github.io/CBhDS-Site/
+' ==========================================================
+
+' --- Icons ---
 !include <tupadr3/common>
 !include <tupadr3/font-awesome-5/server>
 !include <tupadr3/font-awesome-5/database>
