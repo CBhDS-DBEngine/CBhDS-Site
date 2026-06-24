@@ -31,6 +31,15 @@ In my view, once the tool's limitations are understood, it allows for highly eff
 ## PlantUML AG example
 Below is a PlantUML example describing an Always On cluster configuration with AG groups, replication and DAG. Typically, to avoid the "Spaghetti" Effect, probably the Shared Backup feature should be described in another file.
 
+[AAG example](/CBhDS-Site/PlantUML-AAG.txt)
+
+## PlantUML FCI example
+Below is a PlantUML example for a FCI configuration with 2 instances. Note that one instance has tempdb files on shared storage, and the second one has tempdb files both locally. The 2 options are MS compliant. 
+
+[FCI example](/CBhDS-Site/PlantUML-FCI.txt)
+
 `Note: Online UML tools often impose strict limits on diagram size and element counts. In this case, you can use Niolesk to handle larger diagrams.`
 
-[AAG example](/CBhDS-Site/PlantUML-AAG.txt)
+
+
+
