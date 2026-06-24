@@ -1,0 +1,150 @@
+@startuml
+'title SQL Server FCI
+
+' --- Importation des icônes standardisées ---
+!include <tupadr3/common>
+!include <tupadr3/font-awesome-5/server>
+!include <tupadr3/font-awesome-5/database>
+!include <tupadr3/font-awesome-5/microchip>
+!include <tupadr3/font-awesome-5/file_alt>
+!include <tupadr3/font-awesome-5/bomb>
+!include <tupadr3/font-awesome-5/coins>
+!include <tupadr3/font-awesome-5/file_import>
+!include <tupadr3/font-awesome-5/folder>
+!include <tupadr3/font-awesome-5/hockey_puck>
+
+
+
+
+skinparam shadowing false
+skinparam componentStyle rectangle
+left to right direction
+
+
+' ==============================
+
+    package "Cluster Name (FCI - 1x Active & 1x Passive)" #F8B500 {
+
+        package "Cluster Infrastructure" as Infra #FFCC00 {
+
+            package "Nodes" as MyNodes #FFD800 {
+            '  Left to right direction
+
+                component "<$microchip>\nNodeB" as Node2 #FFFF99 {
+                  frame "Disque local" as IZ_2 #D3D3D3{
+                    label "<$database>\nInstanceB_TEMPDB" as L1
+                  }
+                  rectangle "<$folder>\nMount Point T:\" as Z2 #FFFFFF
+                  IZ_2 --> Z2
+                }
+
+                component "<$microchip>\nNodeA" as Node1 #FFFF99 {
+                    frame "Disque local" as IZ_1 #D3D3D3{
+                    label "<$database>\nInstanceB_TEMPDB" as L2
+                    } 
+                    rectangle "<$folder>\nMount Point T:\" as Z1 #FFFFFF
+                    IZ_1 --> Z1
+
+    
+            } 
+          note top of MyNodes
+            Note : FCI -> 1 active node only
+          end note
+
+        }
+    }
+
+    
+
+    ' ==============================
+    ' Cluster Roles 
+    ' ==============================
+
+    package "Cluster Roles" as Roles #8a8f91 {
+
+        package "Cluster Role : SQL Server (InstanceB) - Instance : InstanceB - Prefered node : NodeB" #ADD8E6 {
+
+            component "<$server>\nSQL Instance InstanceB" as SQL1
+            component "<$coins>\nTempdb db" as Temp1
+            component "<$coins>\nSystem db" as Sys1
+            component "<$coins>\nUsers db" as DB1
+            component "<$file_import>\nBackups" as BCK1
+            'component "SQL Agent Backup Jobs" as Jobs1
+
+            frame "12 Shared Disks" as Disks1 #D3D3D3 {
+                label "<$database>\nInstanceB_MOUNTPOINT (M:\)" #D3D3D3
+                label "<$database>\nInstanceB_SYSDB (N:\)" #D3D3D3
+                label "<$database>\nInstanceB_BACKUP" #D3D3D3
+                label "<$database>\nInstanceB_BLOB" #D3D3D3
+                label "<$database>\nInstanceB_DATA" #D3D3D3
+                label "<$database>\nInstanceB_INDEX" #D3D3D3
+                label "<$database>\nInstanceB_LOG" #D3D3D3
+            }
+
+            frame "Mount Points InstanceB" as Mount1 #FFFFFF {
+                rectangle "<$folder>\nM:\" as Mount1_I1 #FFFFFF
+                rectangle "<$folder>\nN:\" as Mount2_I1 #FFFFFF
+            }
+
+            ' Dépendances ciblées
+            Temp1 --> Z1
+            Sys1 --> Mount1_I1
+            DB1 --> Mount2_I1
+            BCK1 --> Mount2_I1
+
+            SQL1 --> Temp1
+            SQL1 --> Sys1
+            SQL1 --> DB1
+            SQL1 --> Disks1
+            SQL1 --> BCK1 : Jobs
+        }
+
+        package "Cluster Role : SQL Server (InstanceA) - Instance : InstanceA - Prefered node : NodeB en premier" #90EE90 {
+
+            component "<$server>\nSQL Instance InstanceA" as SQL2
+            component "<$coins>\nBase TempDb" as Temp2
+            component "<$coins>\nBases System" as Sys2
+            component "<$coins>\nBases Users" as DB2
+            component "<$file_import>\nBackups" as BCK2
+            
+
+            frame "7 Shared Disks" as Disks2 #D3D3D3 {
+				        label "<$database>\nInstanceA_MOUNTPOINT (F:\)" #D3D3D3
+				        label "<$database>\nInstanceA_SYSDB (G:\)" #D3D3D3
+                label "<$database>\nInstanceA_BACKUP" #D3D3D3
+                label "<$database>\nInstanceA_DATA" #D3D3D3
+                label "<$database>\nInstanceA_INDEX" #D3D3D3
+                label "<$database>\nInstanceA_LOG" #D3D3D3
+                label "<$database>\nInstanceA_SYSDB" #D3D3D3
+            }
+
+            frame "Mount Points InstanceA" as Mount2 #FFFFFF {
+                rectangle "<$folder>\nF:\" as Mount4_I2 #FFFFFF
+                rectangle "<$folder>\nG:\" as Mount3_I2 #FFFFFF
+            }
+
+            ' Dépendances ciblées
+            Sys2 --> Mount3_I2
+            DB2 --> Mount4_I2
+            Temp2 --> Mount4_I2
+			      BCK2 --> Mount4_I2
+
+            SQL2 --> Temp2
+            SQL2 --> Sys2
+            SQL2 --> DB2
+            SQL2 -- Disks2
+            SQL2 --> BCK2 : Jobs
+			
+        }
+    }
+
+    ' Failover minimal
+    Node1 -[#red,thickness=4]-> Node2 : <$bomb>\nFailover Order\n1. NodeA\n2. NodeB
+ 
+    skinparam linetype ortho
+    'Node1 ..> Node2 : Failover Order\n1. Node1\n2. Node2
+    
+   
+}
+@enduml
+
