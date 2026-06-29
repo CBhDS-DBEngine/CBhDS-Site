@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cbhds-dbengine.github.io/CBhDS-Site/sitemap.xml
